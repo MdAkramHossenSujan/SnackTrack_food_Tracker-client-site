@@ -36,7 +36,7 @@ const Banner = () => {
         pagination={{ clickable: true }}
         loop={true}
         autoplay={{
-          delay: 2000,
+          delay: 2500,
           disableOnInteraction: false,
         }}
         modules={[Pagination, Autoplay]}
@@ -58,14 +58,15 @@ const Banner = () => {
     <div className="absolute inset-0 flex items-center px-6 md:px-12">
       <div className="text-white z-10 max-w-lg lg:max-w-2xl xl:max-w-3xl">
         <motion.p
-  initial={{ opacity: 0, filter: "blur(12px)" }}
-  animate={{ opacity: 1, filter: "blur(0px)" }}
-  transition={{ duration: 2, ease: "easeOut" }}
+initial={{ opacity: 0, scale: 0.8, filter: "blur(8px)", y: -30 }}
+animate={{ opacity: 1, scale: 1, filter: "blur(0px)", y: 0 }}
+transition={{ duration: 1.2 }}
+
   className="text-3xl lg:text-4xl xl:text-5xl mb-2 font-extrabold"
 >
   Take food before expiring
 </motion.p>
-        <p className=" lg:text-xl mb-4">{slide.text}</p>
+        <p className=" lg:text-xl text-gray-400 mb-4">{slide.text}</p>
         <button className="btn md:btn-lg rounded-3xl bg-green-800 hover:bg-white hover:text-black text-white border-none">
           {slide.btn}
         </button>
