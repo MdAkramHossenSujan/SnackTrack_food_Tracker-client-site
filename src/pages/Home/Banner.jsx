@@ -1,86 +1,85 @@
 import React from 'react';
-import { motion } from "motion/react"
-import teamone from '../../assets/Image/colleagues-working-project-discussing-details.jpg'
-import teamtwo from '../../assets/Image/inspire-your-teamwork-keep-achieving-group-asian-team-creative-business-people-hand-raise-up-partnership-teamwork-concept-modern-office-background.jpg'
+import one from '../../assets/Image/banner_one.jpg';
+import two from '../../assets/Image/banner_two.jpg';
+import three from '../../assets/Image/banner_three.jpg';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import { motion } from "framer-motion";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+const slides = [
+  {
+    img: one,
+    text: "Never forget what's in your fridge. Track food items effortlessly and get notified before they expire.",
+    btn: "Start Tracking",
+  },
+  {
+    img: two,
+    text: "Reduce food waste by staying ahead. Add, edit, and manage food items with ease using our smart expiry tracker.",
+    btn: "Explore",
+  },
+  {
+    img: three,
+    text: "Built for reliability and control. Secure authentication and full CRUD operations ensure your data stays safe.",
+    btn: "Learn More",
+  },
+];
+
+
 const Banner = () => {
-    return (
-        <div className="hero py-12 lg:px-8">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="flex-1 hidden md:flex flex-col lg:items-center gap-6">
-                    <motion.img
-                        animate={{
-                            y: [50, 100, 50],
-                            transition: { duration: 4, repeat: Infinity },
-                        }}
-                        src={teamone}
-                        alt="Team One"
-                        className="w-full max-w-xs md:max-w-sm 
-               rounded-t-3xl rounded-br-3xl border-s-8 border-b-8 
-               border-blue-600 shadow-2xl object-cover"
-                    />
+  return (
+    <div className="h-[300px] md:h-[460px] w-full my-16">
+      <Swiper
+        direction={'vertical'}
+        pagination={{ clickable: true }}
+        loop={true}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        modules={[Pagination, Autoplay]}
+        className="h-full"
+      >
+        {slides.map((slide, idx) => (
+        <SwiperSlide key={idx}>
+  <div className="relative w-full h-full">
+    {/* Darkened Background Image */}
+    <div className="absolute inset-0">
+      <img
+        src={slide.img}
+        alt={`Slide ${idx + 1}`}
+        className="w-full h-full object-cover brightness-[30%]"
+      />
+    </div>
 
-                    <motion.img
-                        animate={{
-                            x: [80, 120, 80],
-                            transition: { duration: 8, delay: 4, repeat: Infinity },
-                        }}
-                        src={teamtwo}
-                        alt="Team Two"
-                        className="w-full max-w-xs md:max-w-sm 
-               rounded-t-3xl rounded-br-3xl border-s-8 border-b-8 
-               border-blue-600 shadow-2xl object-cover"
-                    />
-                </div>
-                <div className="flex-1 md:hidden flex flex-col lg:items-center gap-6">
-                    <motion.img
-                        animate={{
-                            y: [50, 100, 50],
-                            transition: { duration: 4, repeat: Infinity },
-                        }}
-                        src={teamone}
-                        alt="Team One"
-                        className="w-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 
-               rounded-t-3xl rounded-br-3xl border-s-8 border-b-8 
-               border-blue-600 shadow-2xl object-cover"
-                    />
+    {/* Text Content */}
+    <div className="absolute inset-0 flex items-center px-6 md:px-12">
+      <div className="text-white z-10 max-w-lg lg:max-w-2xl xl:max-w-3xl">
+        <motion.p
+  initial={{ opacity: 0, filter: "blur(12px)" }}
+  animate={{ opacity: 1, filter: "blur(0px)" }}
+  transition={{ duration: 2, ease: "easeOut" }}
+  className="text-3xl lg:text-4xl xl:text-5xl mb-2 font-extrabold"
+>
+  Take food before expiring
+</motion.p>
+        <p className=" lg:text-xl mb-4">{slide.text}</p>
+        <button className="btn md:btn-lg rounded-3xl bg-green-800 hover:bg-white hover:text-black text-white border-none">
+          {slide.btn}
+        </button>
+      </div>
+    </div>
+  </div>
+</SwiperSlide>
 
-                    <motion.img
-                        animate={{
-                            x: [20, 40, 20],
-                            transition: { duration: 8, delay: 4, repeat: Infinity },
-                        }}
-                        src={teamtwo}
-                        alt="Team Two"
-                        className="w-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 
-               rounded-t-3xl rounded-br-3xl border-s-8 border-b-8 
-               border-blue-600 shadow-2xl object-cover"
-                    />
-                </div>
 
-                <div className='flex-1 py-6'>
-                    <motion.h1
-                        initial={{ scale: 0.5 }}
-                        animate={{
-                            scale: 1,
-                            transition: { duration: 2 },
-                        }}
-                        className='md:text-5xl text-4xl font-extrabold'
-                    >Latest <motion.span
-                        animate={
-                            {
-                                color: ['#17c90a', '#062c7d', '#f4f716'],
-                                transition: { duration: 4, repeat: Infinity }
-                            }
-                        }
-                    > Jobs</motion.span> For You!!!</motion.h1>
-                    <p className="py-6 text-sm md:text-[16px]">
-                        Your Career Hub is a comprehensive job portal designed to connect job seekers with employers across industries. Whether you're a fresh graduate looking for your first opportunity or a seasoned professional aiming to advance your career, our platform provides access to thousands of verified job listings from top companies.
-                    </p>
-                    <button className="btn btn-primary">Get Started</button>
-                </div>
-            </div>
-        </div>
-    );
+
+        ))}
+      </Swiper>
+    </div>
+  );
 };
 
 export default Banner;

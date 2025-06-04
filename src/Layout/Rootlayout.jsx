@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 
 const RootLayout = () => {
     return (
-        <div>
+        <div className='poppins-regular'>
             <NavBar/>
             <Outlet/>
             <Footer/>

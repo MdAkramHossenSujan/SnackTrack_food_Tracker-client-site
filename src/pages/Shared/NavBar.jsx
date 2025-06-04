@@ -25,7 +25,19 @@ const NavBar = () => {
             <ul
               tabindex="0"
               class="menu menu-md dropdown-content min-h-screen bg-base-100 rounded-box z-1 mt-3 w-52 p-2 -right-36 lg:right-10 rounded-none shadow">
-              {/* <li><a>Item 1</a></li> */}
+               {user && (
+            <div>
+              <img
+                data-tooltip-id="view-tooltip"
+                data-tooltip-content={user.displayName}
+                data-tooltip-place="top"
+                className="w-12 md:hidden mx-auto h-12 rounded-full border-4 border-green-400 dark:border-green-700 shadow-lg cursor-pointer transition-transform hover:scale-105"
+                src={user?.photoURL || 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}
+                alt="User"
+              />
+              <Tooltip id="view-tooltip" />
+            </div>
+          )}
               <li><NavLink to={'./'}>Home</NavLink></li>
               <li><NavLink to={'/fridge'}>Fridge</NavLink></li>
               <li>
@@ -73,7 +85,7 @@ const NavBar = () => {
                 data-tooltip-id="view-tooltip"
                 data-tooltip-content={user.displayName}
                 data-tooltip-place="top"
-                className="w-12 h-12 rounded-full border-4 border-green-400 dark:border-green-700 shadow-lg cursor-pointer transition-transform hover:scale-105"
+                className="w-12 hidden md:block h-12 rounded-full border-4 border-green-400 dark:border-green-700 shadow-lg cursor-pointer transition-transform hover:scale-105"
                 src={user?.photoURL || 'https://i.ibb.co.com/hJztTMWF/La-suite-de-Dragon-Ball-Z-arrive-cet-ete.jpg'}
                 alt="User"
               />
