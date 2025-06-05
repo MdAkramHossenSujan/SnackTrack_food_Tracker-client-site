@@ -30,7 +30,7 @@ const slides = [
 
 const Banner = () => {
   return (
-    <div className="h-[300px] md:min-h-screen w-full my-16">
+    <div className="h-[60vh] md:min-h-screen w-full my-16">
       <Swiper
         direction={'vertical'}
         pagination={{ clickable: true }}
@@ -55,7 +55,7 @@ const Banner = () => {
     </div>
 
     {/* Text Content */}
-    <div className="absolute inset-0 flex items-center px-6 md:px-12 lg:px-24">
+    <div className="absolute inset-0 flex items-center px-8 md:px-12 lg:px-24">
       <div className="text-white z-10 max-w-lg lg:max-w-3xl xl:max-w-4xl">
         <motion.p
 initial={{ opacity: 0, scale: 0.8, filter: "blur(8px)", y: -30 }}

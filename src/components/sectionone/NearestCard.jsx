@@ -8,6 +8,7 @@ import { FreeMode, Pagination, Navigation, Mousewheel, Keyboard } from "swiper/m
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Link } from "react-router";
 
 const NearestCard = ({ nearestPromise }) => {
   const foods = use(nearestPromise);
@@ -31,10 +32,8 @@ const NearestCard = ({ nearestPromise }) => {
         {foods.map((food, index) => (
           <SwiperSlide key={index} className="flex">
             <div className="h-full w-full">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+              <div
+        
                 className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-400 rounded-2xl p-4 flex flex-col justify-between h-full"
               >
                 {/* Top Info */}
@@ -52,7 +51,7 @@ const NearestCard = ({ nearestPromise }) => {
                   <img
                     src={food.foodImage}
                     alt={food.foodTitle}
-                    className="w-48 h-48 object-cover rounded-xl"
+                    className="w-68 h-48 object-cover rounded-xl"
                   />
                 </div>
 
@@ -71,13 +70,15 @@ const NearestCard = ({ nearestPromise }) => {
                     Quantity: {food.quantity} {food.unit}
                   </p>
                   <div className="pt-2 flex justify-end">
-                    <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition">
+                    <Link to={`/fridgeFoods/${food._id}`}>
+                    <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-white hover:text-black cursor-pointer text-white text-sm font-semibold rounded-lg transition">
                       <FaEye />
                       See Details
                     </button>
+                    </Link>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </SwiperSlide>
         ))}
