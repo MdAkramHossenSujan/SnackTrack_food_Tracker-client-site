@@ -6,6 +6,7 @@ import {
   FaClock,
   FaTasks
 } from 'react-icons/fa';
+import { motion } from "framer-motion"
 const HowItWorks = () => {
   const steps = [
   {
@@ -40,22 +41,30 @@ const HowItWorks = () => {
   },
 ];
     return (
-            <div className="max-w-6xl mx-auto px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div className="max-w-7xl mx-auto px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
       <h2 className="text-4xl font-bold text-center mb-10 text-gray-900 dark:text-white">How it works</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
-        {steps.map((step, index) => (
-          <div
-            key={index}
-            className="flex items-start space-x-4 p-4 rounded-xl transition-colors duration-300"
-          >
-            <div>{step.icon}</div>
-            <div>
-              <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-1">{step.title.toUpperCase()}</h3>
-              <p className="text-gray-700 dark:text-gray-300">{step.description}</p>
-            </div>
-          </div>
-        ))}
+      
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
+  {steps.map((step, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.4, duration: 0.6, ease: "easeOut" }}
+      className="flex items-start space-x-4 p-4 rounded-xl transition-colors duration-300"
+    >
+      <div>{step.icon}</div>
+      <div>
+        <h3 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-1">
+          {step.title.toUpperCase()}
+        </h3>
+        <p className="text-gray-700 dark:text-gray-300">
+          {step.description}
+        </p>
       </div>
+    </motion.div>
+  ))}
+</div>
     </div>
         
     );
