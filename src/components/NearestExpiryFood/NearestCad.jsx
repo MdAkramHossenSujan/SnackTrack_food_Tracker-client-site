@@ -55,7 +55,7 @@ console.log(displayFoods)
         {/* Action Button */}
         <div className="mt-4 flex justify-end">
           <Link to={`/fridgeFoods/${food._id}`}>
-            <button className="flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 border border-blue-600 transition duration-200">
+            <button className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm bg-blue-600 text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 border border-blue-600 transition duration-200">
               <FaEye />
               View Details
             </button>
