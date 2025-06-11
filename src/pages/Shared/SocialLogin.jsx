@@ -9,7 +9,7 @@ const navigate=useNavigate()
 const from=location.state || '/';
     const handleSignIn=()=>{
         signInWithGoogle().then(result=>{
-            console.log(result)
+            // console.log(result)
             navigate(from)
             .catch(error=>{
                 console.log(error)

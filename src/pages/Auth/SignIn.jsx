@@ -16,14 +16,14 @@ const from=location.state || '/';
         const formData = new FormData(form)
         const data = Object.fromEntries(formData.entries())
         signInUser(data.email, data.password).then(result => {
-            console.log(result.user)
+            // console.log(result.user)
             toast.success('Signed In Successfully')
             navigate(from)
         }).catch(error => {
             console.log(error)
             toast.error('Wrong Credential')
         })
-        console.log(data)
+        // console.log(data)
     }
     return (
         <div>

@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import Banner from './Banner';
 import HowItWorks from './HowItWorks';
-import NearestExpiry from '../../components/sectionone/NearestExpiry';
+import ExpiredFood from '../../components/sectionone/ExpiredFood';
+import Nearest from '../../components/NearestExpiryFood/Nearest';
+
 
 
 const Home = () => {
@@ -14,7 +16,10 @@ const Home = () => {
                 <HowItWorks/>
             </div>
             <div>
-                <NearestExpiry/>
+                <Nearest/>
+            </div>
+            <div>
+                <ExpiredFood/>
             </div>
         </div>
     );

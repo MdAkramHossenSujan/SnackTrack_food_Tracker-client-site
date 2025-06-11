@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Link } from "react-router";
 
-const NearestCard = ({ nearestPromise }) => {
+const ExpiredCard = ({ nearestPromise }) => {
   const foods = use(nearestPromise);
 
   return (
@@ -42,7 +42,7 @@ const NearestCard = ({ nearestPromise }) => {
                     {food.brand}
                   </span>
                   <span className="bg-red-500 text-white text-xs px-3 py-1 rounded-full font-semibold">
-                    Expires: {new Date(food.expiryDate).toLocaleDateString()}
+                    Expired
                   </span>
                 </div>
 
@@ -56,7 +56,7 @@ const NearestCard = ({ nearestPromise }) => {
                 </div>
 
                 {/* Bottom Content */}
-                <div className="space-y-2 h-[156px]">
+                <div className="space-y-2 h-[176px]">
                   <div className="flex justify-between items-center">
                     <h2 className="text-xl font-bold text-gray-800 dark:text-white">
                       {food.foodTitle}
@@ -68,6 +68,9 @@ const NearestCard = ({ nearestPromise }) => {
                   <p className="text-gray-600 dark:text-gray-300 text-sm">{food.description}</p>
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-400">
                     Quantity: {food.quantity} {food.unit}
+                  </p>
+                  <p className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                    Expires: {new Date(food.expiryDate).toLocaleDateString()}
                   </p>
                   <div className="pt-2 flex justify-end">
                     <Link to={`/fridgeFoods/${food._id}`}>
@@ -92,5 +95,5 @@ const NearestCard = ({ nearestPromise }) => {
   );
 };
 
-export default NearestCard;
+export default ExpiredCard;
 

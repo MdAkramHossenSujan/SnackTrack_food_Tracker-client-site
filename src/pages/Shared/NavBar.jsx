@@ -5,11 +5,10 @@ import { Moon, Sun } from 'lucide-react';
 import { Tooltip } from 'react-tooltip';
 import './Navbar.css'
 const NavBar = () => {
-  const { user, logOut, theme,
-    toggleTheme, } = use(AuthContext)
+  const { user, logOut, theme,toggleTheme, } = use(AuthContext)
   const handleSignOut = () => {
     logOut().then(() => {
-      console.log('Sign-out successful.')
+      // console.log('Sign-out successful.')
     }).catch(error => {
       console.log(error)
     })

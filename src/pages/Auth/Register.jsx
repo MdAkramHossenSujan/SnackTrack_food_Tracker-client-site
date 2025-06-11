@@ -18,9 +18,9 @@ const Register = () => {
         const formData = new FormData(form)
         const data = Object.fromEntries(formData.entries())
         setEmail(data.email)
-        console.log(data)
+        // console.log(data)
         const name=data.displayName
-        console.log(name)
+        // console.log(name)
         if (name.length < 5) {
             setError('Name Should Be More Than 5 words.')
             return;
@@ -47,17 +47,17 @@ const Register = () => {
             .then(result => {
                 updateUser({ displayName: data.displayName, photoURL: data.photoURL })
                     .then(() => {
-                        console.log('Profile Added', user)
+                        // console.log('Profile Added', user)
                         toast.success('Registered Successfully')
                     }).catch(error => console.log(error))
             }).catch(error => console.log(error))
-        console.log(data)
+        // console.log(data)
     }
     const handleForget = (e) => {
         e.preventDefault()
         resetPass(email)
             .then(() => {
-                console.log('Email Sent')
+                // console.log('Email Sent')
             }).catch(error => console.log(error))
 
 
