@@ -29,7 +29,11 @@ const MyFoodList = ({ myFoodsPromise }) => {
         toast.error('Something went wrong');
       });
   };
-
+if(foods.length==0){
+  return <div className='min-h-screen'>
+    <p>No food Items Here</p>
+  </div>
+}
   return (
     <div className="overflow-x-auto px-4 py-28">
       <table className="table max-w-7xl mx-auto">
@@ -72,6 +76,7 @@ const MyFoodList = ({ myFoodsPromise }) => {
               </td>
               <td>{new Date(food.expiryDate).toLocaleString()}</td>
               <th className="flex my-5 gap-2 lg:gap-4">
+                <Link to={`/updateFood/${food._id}`}>
                 <button
                   className="tooltip-trigger cursor-pointer"
                   data-tooltip-id="modify-tooltip"
@@ -79,6 +84,7 @@ const MyFoodList = ({ myFoodsPromise }) => {
                 >
                   <MdEdit className="text-blue-500 text-lg" />
                 </button>
+                </Link>
                 <button
                   onClick={() => handleDelete(food._id)}
                   className="tooltip-trigger cursor-pointer"
