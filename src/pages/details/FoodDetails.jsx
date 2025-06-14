@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 import { useLoaderData } from 'react-router';
 import Countdown from 'react-countdown';
 import {
@@ -8,13 +8,35 @@ import {
   MdCalendarToday,
   MdLocalOffer
 } from 'react-icons/md';
+import { AuthContext } from '../../context/AuthContext/AuthContext';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const FoodDetails = () => {
   const food = useLoaderData();
-  console.log(food)
+  const { user } = use(AuthContext)
+  console.log(food, user)
   const expiryDate = new Date(food.expiryDate);
   const addedDate = new Date(food.addedDate);
-
+  const handleNote = (e) => {
+    e.preventDefault()
+    const time = new Date
+    const addedTime = time.toISOString()
+    console.log(addedTime)
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    axios.patch(`http://localhost:5000/fridgeFoods/${food._id}`, data
+    ).then(res => {
+      if (res.status === 200) {
+        toast.success(`Your Note added successfully`)
+      }
+      form.reset()
+      // console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
   return (
     <div className="min-h-screen py-24 lg:py-36 px-4 md:px-10 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -33,14 +55,14 @@ const FoodDetails = () => {
         <div className="space-y-6">
           {/* Countdown Timer */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
-           {
-            expiryDate >= new Date &&  (
+            {
+              expiryDate >= new Date && (
                 <div className="flex items-center gap-3 mb-3">
-              <MdOutlineWatchLater className="text-red-500 text-2xl" />
-              <h2 className="text-2xl font-semibold">Expires In</h2>
-            </div>
-            )
-           }
+                  <MdOutlineWatchLater className="text-red-500 text-2xl" />
+                  <h2 className="text-2xl font-semibold">Expires In</h2>
+                </div>
+              )
+            }
             <Countdown
               date={expiryDate}
               renderer={({ days, hours, minutes, seconds, completed }) =>
@@ -61,12 +83,12 @@ const FoodDetails = () => {
               <MdCalendarToday className="text-blue-500" />
               Added On: {addedDate.toLocaleDateString()}
             </div>
-           {
-            expiryDate >= new Date &&  <div className="flex items-center gap-2">
-              <MdCalendarToday className="text-blue-500" />
-              Will Expire On: {expiryDate.toLocaleDateString()}
-            </div>
-           }
+            {
+              expiryDate >= new Date && <div className="flex items-center gap-2">
+                <MdCalendarToday className="text-blue-500" />
+                Will Expire On: {expiryDate.toLocaleDateString()}
+              </div>
+            }
             <div className="flex items-center gap-2">
               <MdCategory className="text-purple-500" />
               Category: {food.category}
@@ -78,10 +100,32 @@ const FoodDetails = () => {
             <div className="flex items-center gap-2">
               🧪 Quantity: {food.quantity} {food.unit}
             </div>
-            <div className="flex items-start gap-2">
-              <MdLocalOffer className="text-yellow-500 mt-1" />
-              Notes: <span className="italic">{food.notes}</span>
+            <div>
+              {
+    food.notes && (
+      <p className="italic">
+        <span className="font-medium">Note:</span> {food.notes}
+      </p>
+    )
+  }
             </div>
+            <div>
+  {food?.newNotes &&
+    <div className="space-y-3">
+      {food.newNotes?.map((item, index) => (
+        <div key={index} className="dark:bg-green-800 px-2 py-3 dark:text-white rounded-xl bg-green-200 shadow-sm">
+          <p className=" bg-blue-400 rounded-2xl px-3 py-2 text-white font-semibold">
+            {item.note}
+          </p>
+          <p className="text-xs px-2 mt-1">
+            Added on: {new Date(item.addedTime).toLocaleString()}
+          </p>
+        </div>
+      ))}
+    </div>
+}
+</div>
+
           </div>
 
           {/* Description Box */}
@@ -91,7 +135,19 @@ const FoodDetails = () => {
               {food.description}
             </p>
           </div>
+          <div>
+            {
+              user?.email == food?.userEmail &&
+              <form onSubmit={handleNote}>
+                <textarea required name='note' placeholder="Type Note About the food" className="textarea w-full textarea-md"></textarea>
+                <div className='flex justify-end mt-3'>
+                  <button className='btn btn-primary rounded-2xl'>Add Note</button>
+                </div>
+              </form>
+            }
+          </div>
         </div>
+
       </div>
     </div>
   );

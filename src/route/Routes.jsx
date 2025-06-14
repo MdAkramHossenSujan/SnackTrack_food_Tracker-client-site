@@ -8,6 +8,9 @@ import SignIn from "../pages/Auth/SignIn";
 import AllFood from "../pages/fridge/AllFood";
 import AddFood from "../pages/addfood/AddFood";
 import FoodDetails from "../pages/details/FoodDetails";
+import MyFood from "../pages/MyFood/MyFood";
+import PrivateRoute from "../context/AuthContext/PrivateRoute";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -32,12 +35,19 @@ export const router = createBrowserRouter([
         Component:AllFood
       },{
         path:'/addfood',
-        Component:AddFood
+        element:<PrivateRoute>
+          <AddFood></AddFood>
+        </PrivateRoute>
       },
       {
         path:'/fridgeFoods/:id',
         Component:FoodDetails,
         loader:({params})=>fetch(`http://localhost:5000/fridgeFoods/${params.id}`)
+      },{
+        path:'/myfooditems',
+        element: <PrivateRoute>
+          <MyFood></MyFood>
+        </PrivateRoute>
       }
     ]
   },

@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React, { use } from 'react';
 import { AuthContext } from '../context/AuthContext/AuthContext';
-
 const axiosInstance = axios.create({
-    baseURL: 'https://career-code-server-roan.vercel.app/'
+    baseURL: 'http://localhost:5000/'
 })
 const useAxios = () => {
     const { user, logOut } = use(AuthContext)

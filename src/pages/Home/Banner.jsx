@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 import one from '../../assets/Image/banner_one.jpg';
 import two from '../../assets/Image/banner_two.jpg';
 import three from '../../assets/Image/banner_three.jpg';
@@ -26,7 +26,6 @@ const slides = [
     btn: "Learn More",
   },
 ];
-
 
 const Banner = () => {
   return (
