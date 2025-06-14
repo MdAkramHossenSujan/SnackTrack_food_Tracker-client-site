@@ -3,7 +3,7 @@ import Lottie from 'lottie-react';
 import register from '../../assets/Animation/Animation - 1748197816538.json'
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import SocialLogin from '../Shared/SocialLogin';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 const Register = () => {
     const [error, setError] = useState('')
@@ -11,6 +11,7 @@ const Register = () => {
     const [passError, setPassError] = useState('')
     const { createUser, updateUser, user, resetPass } = use(AuthContext)
     const [email, setEmail] = useState('')
+    const navigate=useNavigate()
     const handleRegister = (e) => {
         e.preventDefault()
 
@@ -47,7 +48,7 @@ const Register = () => {
             .then(result => {
                 updateUser({ displayName: data.displayName, photoURL: data.photoURL })
                     .then(() => {
-                        // console.log('Profile Added', user)
+                        navigate('/myfooditems')
                         toast.success('Registered Successfully')
                     }).catch(error => console.log(error))
             }).catch(error => console.log(error))
