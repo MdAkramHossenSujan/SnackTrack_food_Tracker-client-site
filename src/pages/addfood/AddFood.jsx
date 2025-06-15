@@ -20,9 +20,16 @@ const AddFood = () => {
         data.addedDate = new Date().toISOString();
         data.userEmail = user?.email;
         data.expiryDate = new Date(data.expiryDate).toISOString();
-        axios.post('http://localhost:5000/fridgeFoods', data).then(res => {
+        axios.post('http://localhost:5000/fridgeFoods', data,
+            {
+  headers: {
+    Authorization: `Bearer ${user.accessToken}` // Ensure this is set
+  }
+}
+        ).then(res => {
             if (res.status === 200) {
-                toast.success(`Your ${data.quantity} ${data.unit} of ${user.foodTitle} added successfully`)
+                toast.success(`Your ${data.quantity} ${data.unit} of ${data.foodTitle} added successfully`)
+                navigate('/myfooditems')
             }
             // console.log(res)
         }).catch(err => {

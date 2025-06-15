@@ -26,7 +26,12 @@ const FoodDetails = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    axios.patch(`http://localhost:5000/fridgeFoods/${food._id}`, data
+    axios.patch(`http://localhost:5000/fridgeFoods/${food._id}`, data,
+      {
+  headers: {
+    Authorization: `Bearer ${user.accessToken}` // Ensure this is set
+  }
+}
     ).then(res => {
       if (res.status === 200) {
         toast.success(`Your Note added successfully`)

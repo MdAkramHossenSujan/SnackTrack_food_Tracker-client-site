@@ -22,7 +22,13 @@ const UpdateFood = () => {
         data.addedDate = new Date().toISOString();
         data.userEmail = user?.email;
         data.expiryDate = new Date(data.expiryDate).toISOString();
-        axios.put(`http://localhost:5000/fridgeFoods/${food._id}`, data).then(res => {
+        axios.put(`http://localhost:5000/fridgeFoods/${food._id}`, data,
+            {
+  headers: {
+    Authorization: `Bearer ${user.accessToken}` // Ensure this is set
+  }
+}
+        ).then(res => {
             if (res.status === 200) {
                 toast.success(`Your ${data.quantity} ${data.unit} of ${data.foodTitle} Updated successfully`)
                 navigate('/myfooditems')
