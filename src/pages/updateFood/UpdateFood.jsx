@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const UpdateFood = () => {
     const { user } = use(AuthContext)
-    const food=useLoaderData()
+    const food = useLoaderData()
     console.log(food)
     // console.log(user)
     const navigate = useNavigate();
@@ -24,10 +24,10 @@ const UpdateFood = () => {
         data.expiryDate = new Date(data.expiryDate).toISOString();
         axios.put(`http://localhost:5000/fridgeFoods/${food._id}`, data,
             {
-  headers: {
-    Authorization: `Bearer ${user.accessToken}` // Ensure this is set
-  }
-}
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}` // Ensure this is set
+                }
+            }
         ).then(res => {
             if (res.status === 200) {
                 toast.success(`Your ${data.quantity} ${data.unit} of ${data.foodTitle} Updated successfully`)

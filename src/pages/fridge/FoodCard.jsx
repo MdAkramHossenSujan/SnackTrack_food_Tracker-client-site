@@ -1,5 +1,6 @@
 import { FaExclamationTriangle, FaEye } from 'react-icons/fa';
 import { format } from 'date-fns';
+import { Link } from 'react-router';
 
 const FoodCard = ({ food }) => {
     const {
@@ -9,6 +10,7 @@ const FoodCard = ({ food }) => {
         quantity,
         expiryDate,
         unit,
+        _id
     } = food;
 
     const now = new Date();
@@ -42,10 +44,12 @@ const FoodCard = ({ food }) => {
             </div>
 
             {/* See Details Button */}
+            <Link to={`/fridgeFoods/${_id}`}>
             <button className="mt-4 w-full flex items-center cursor-pointer justify-center gap-2 bg-white text-[#2f2a2a] hover:bg-gray-800 hover:text-white font-medium text-sm py-2 rounded-lg transition">
                 <FaEye />
                 See Details
             </button>
+            </Link>
         </div>
     );
 };

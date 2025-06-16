@@ -6,7 +6,7 @@ const AllFood = () => {
     const [foods, setFoods] = useState([]);
     const [category, setCategory] = useState('');
     const [loading, setLoading] = useState(true);
-const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState('');
     useEffect(() => {
         setLoading(true);
         const url = category
@@ -24,12 +24,12 @@ const [searchText, setSearchText] = useState('');
                 setLoading(false);
             });
     }, [category]);
- useEffect(() => {
-    fetch(`http://localhost:5000/fridge/search?q=${searchText}`)
-      .then(res => res.json())
-      .then(data => setFoods(data))
-      .catch(err => console.error('Search error:', err));
-  }, [searchText]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/fridge/search?q=${searchText}`)
+            .then(res => res.json())
+            .then(data => setFoods(data))
+            .catch(err => console.error('Search error:', err));
+    }, [searchText]);
     const handleChange = (e) => {
         setCategory(e.target.value);
     };
@@ -44,8 +44,7 @@ const [searchText, setSearchText] = useState('');
     }
     const handleSearch = (e) => {
         e.preventDefault()
-setSearchText(e.target.search.value)
-
+        setSearchText(e.target.search.value)
     }
     return (
         <div className="py-28 px-4">
@@ -53,16 +52,16 @@ setSearchText(e.target.search.value)
 
             <div className="mb-14 max-w-7xl mx-auto flex justify-between text-center">
                 <form onSubmit={handleSearch} className='flex gap-2'>
-                    <input name='search' type="text" placeholder="Success" class="ml-8 input input-success" />
+                    <input name='search' type="text" placeholder="Type title,category or brand" class="md:ml-8 input input-success" />
                     <button className='cursor-pointer mb-8'><FaSearch size={25} /></button>
                 </form>
                 <div>
-                    <label htmlFor="category" className="mr-2 font-semibold text-lg">Filter by Category:</label>
+                    <label htmlFor="category" className="mr-2 hidden md:block font-semibold text-lg">Filter by Category:</label>
                     <select
                         id="category"
                         value={category}
                         onChange={handleChange}
-                        className="border cursor-pointer dark:bg-neutral-900 px-4 py-2 mb-10 rounded-md"
+                        className="border cursor-pointer dark:bg-neutral-900 px-1 md:px-4 py-2 mb-10 rounded-md"
                     >
                         <option value="">All</option>
                         <option value="Dairy">Dairy</option>

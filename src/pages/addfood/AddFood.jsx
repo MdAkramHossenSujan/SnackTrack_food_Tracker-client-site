@@ -22,10 +22,10 @@ const AddFood = () => {
         data.expiryDate = new Date(data.expiryDate).toISOString();
         axios.post('http://localhost:5000/fridgeFoods', data,
             {
-  headers: {
-    Authorization: `Bearer ${user.accessToken}` // Ensure this is set
-  }
-}
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}` // Ensure this is set
+                }
+            }
         ).then(res => {
             if (res.status === 200) {
                 toast.success(`Your ${data.quantity} ${data.unit} of ${data.foodTitle} added successfully`)

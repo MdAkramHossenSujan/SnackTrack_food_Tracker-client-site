@@ -6,9 +6,9 @@ const ExpiredFood = () => {
     return (
         <div className='max-w-7xl mx-auto my-8 px-8'>
             <h2 className='text-3xl font-bold py-6'>Expired Food</h2>
-           <ExpiredCard nearestPromise={nearestPromise}>
+            <ExpiredCard nearestPromise={nearestPromise}>
 
-           </ExpiredCard>
+            </ExpiredCard>
         </div>
     );
 };

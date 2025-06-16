@@ -28,10 +28,10 @@ const FoodDetails = () => {
     const data = Object.fromEntries(formData.entries());
     axios.patch(`http://localhost:5000/fridgeFoods/${food._id}`, data,
       {
-  headers: {
-    Authorization: `Bearer ${user.accessToken}` // Ensure this is set
-  }
-}
+        headers: {
+          Authorization: `Bearer ${user.accessToken}` // Ensure this is set
+        }
+      }
     ).then(res => {
       if (res.status === 200) {
         toast.success(`Your Note added successfully`)
@@ -107,29 +107,29 @@ const FoodDetails = () => {
             </div>
             <div>
               {
-    food.notes && (
-      <p className="italic">
-        <span className="font-medium">Note:</span> {food.notes}
-      </p>
-    )
-  }
+                food.notes && (
+                  <p className="italic">
+                    <span className="font-medium">Note:</span> {food.notes}
+                  </p>
+                )
+              }
             </div>
             <div>
-  {food?.newNotes &&
-    <div className="space-y-3">
-      {food.newNotes?.map((item, index) => (
-        <div key={index} className="dark:bg-green-800 px-2 py-3 dark:text-white rounded-xl bg-green-200 shadow-sm">
-          <p className=" bg-blue-400 rounded-2xl px-3 py-2 text-white font-semibold">
-            {item.note}
-          </p>
-          <p className="text-xs px-2 mt-1">
-            Added on: {new Date(item.addedTime).toLocaleString()}
-          </p>
-        </div>
-      ))}
-    </div>
-}
-</div>
+              {food?.newNotes &&
+                <div className="space-y-3">
+                  {food.newNotes?.map((item, index) => (
+                    <div key={index} className="dark:bg-green-800 px-2 py-3 dark:text-white rounded-xl bg-green-200 shadow-sm">
+                      <p className=" bg-blue-400 rounded-2xl px-3 py-2 text-white font-semibold">
+                        {item.note}
+                      </p>
+                      <p className="text-xs px-2 mt-1">
+                        Added on: {new Date(item.addedTime).toLocaleString()}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              }
+            </div>
 
           </div>
 
@@ -140,16 +140,14 @@ const FoodDetails = () => {
               {food.description}
             </p>
           </div>
-          <div>
-            {
-              user?.email == food?.userEmail &&
+          <div>   
               <form onSubmit={handleNote}>
                 <textarea required name='note' placeholder="Type Note About the food" className="textarea w-full textarea-md"></textarea>
                 <div className='flex justify-end mt-3'>
-                  <button className='btn btn-primary rounded-2xl'>Add Note</button>
+                  <button disabled={user?.email !== food?.userEmail} className={`btn btn-primary rounded-2xl`}>Add Note</button>
                 </div>
               </form>
-            }
+            
           </div>
         </div>
 
