@@ -56,7 +56,7 @@ const NavBar = () => {
             user ? <button onClick={handleSignOut} className='btn lg:hidden rounded-3xl bg-white text-black'>
               Sign Out
             </button> :
-              <div className='lg:hidden hover:bg-white md:inline-flex gap-2'>
+              <div className='lg:hidden hover:bg-white inline-flex gap-2'>
                 <Link to={'/register'} className={'btn bg-green-700 dark:bg-white shadow shadow-green-600 dark:text-black text-white rounded-4xl dark:shadow-white'}>Register</Link>
                 <Link to={'/signin'} className={'btn rounded-4xl dark:border-white shadow shadow-black dark:shadow-white dark:shadow'}>Sign In</Link>
               </div>
