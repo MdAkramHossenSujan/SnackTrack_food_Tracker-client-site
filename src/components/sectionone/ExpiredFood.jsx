@@ -1,7 +1,7 @@
 import React from 'react';
 import NearestCard from './ExpiredCard';
 import ExpiredCard from './ExpiredCard';
-const nearestPromise = fetch('http://localhost:5000/expiredFoods').then(res => res.json())
+const nearestPromise = fetch('https://food-expiry-tracker-server.vercel.app/expiredFoods').then(res => res.json())
 const ExpiredFood = () => {
     return (
         <div className='max-w-7xl mx-auto my-8 px-8'>

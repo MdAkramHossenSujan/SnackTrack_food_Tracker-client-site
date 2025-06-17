@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { use } from 'react';
 import { AuthContext } from '../context/AuthContext/AuthContext';
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000/'
+    baseURL: 'https://food-expiry-tracker-server.vercel.app/'
 })
 const useAxios = () => {
     const { user, logOut } = use(AuthContext)

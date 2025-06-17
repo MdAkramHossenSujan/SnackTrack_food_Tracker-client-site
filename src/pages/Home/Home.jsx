@@ -3,6 +3,7 @@ import Banner from './Banner';
 import HowItWorks from './HowItWorks';
 import ExpiredFood from '../../components/sectionone/ExpiredFood';
 import Nearest from '../../components/NearestExpiryFood/Nearest';
+import Faq from '../../components/faq/Faq';
 
 
 
@@ -20,6 +21,12 @@ const Home = () => {
             </div>
             <div>
                 <ExpiredFood/>
+            </div>
+            <div>
+
+            </div>
+            <div>
+                <Faq/>
             </div>
         </div>
     );

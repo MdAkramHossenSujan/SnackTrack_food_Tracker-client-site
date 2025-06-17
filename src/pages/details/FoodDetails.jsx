@@ -26,7 +26,7 @@ const FoodDetails = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    axios.patch(`http://localhost:5000/fridgeFoods/${food._id}`, data,
+    axios.patch(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${food._id}`, data,
       {
         headers: {
           Authorization: `Bearer ${user.accessToken}` // Ensure this is set

@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
       {
         path: '/fridgeFoods/:id',
         Component: FoodDetails,
-        loader: ({ params }) => fetch(`http://localhost:5000/fridgeFoods/${params.id}`),
+        loader: ({ params }) => fetch(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${params.id}`),
     hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
       <span className="loading loading-spinner text-success"></span>
     </div>,
@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
           <UpdateFood></UpdateFood>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/fridgeFoods/${params.id}`),
+        loader: ({ params }) => fetch(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${params.id}`),
     hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
       <span className="loading loading-spinner text-success"></span>
     </div>,

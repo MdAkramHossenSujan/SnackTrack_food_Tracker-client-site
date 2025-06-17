@@ -14,7 +14,7 @@ const MyFoodList = ({ myFoodsPromise }) => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/fridgeFoods/${id}`)
+      .delete(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${id}`)
       .then((res) => {
         if (res.data.deletedCount > 0) {
           toast.success('Item deleted successfully');

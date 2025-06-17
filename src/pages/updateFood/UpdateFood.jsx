@@ -22,7 +22,7 @@ const UpdateFood = () => {
         data.addedDate = new Date().toISOString();
         data.userEmail = user?.email;
         data.expiryDate = new Date(data.expiryDate).toISOString();
-        axios.put(`http://localhost:5000/fridgeFoods/${food._id}`, data,
+        axios.put(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${food._id}`, data,
             {
                 headers: {
                     Authorization: `Bearer ${user.accessToken}` // Ensure this is set

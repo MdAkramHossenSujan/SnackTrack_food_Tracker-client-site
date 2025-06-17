@@ -10,8 +10,8 @@ const AllFood = () => {
     useEffect(() => {
         setLoading(true);
         const url = category
-            ? `http://localhost:5000/fridge?category=${category}`
-            : 'http://localhost:5000/fridge';
+            ? `https://food-expiry-tracker-server.vercel.app/fridge?category=${category}`
+            : 'https://food-expiry-tracker-server.vercel.app/fridge';
 
         fetch(url)
             .then(res => res.json())
@@ -25,7 +25,7 @@ const AllFood = () => {
             });
     }, [category]);
     useEffect(() => {
-        fetch(`http://localhost:5000/fridge/search?q=${searchText}`)
+        fetch(`https://food-expiry-tracker-server.vercel.app/fridge/search?q=${searchText}`)
             .then(res => res.json())
             .then(data => setFoods(data))
             .catch(err => console.error('Search error:', err));
