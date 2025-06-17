@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { Moon, Sun } from 'lucide-react';
 import { Tooltip } from 'react-tooltip';
 import './Navbar.css'
+import foodWatch from '../../assets/Image/foodWatch.png';
 const NavBar = () => {
   const { user, logOut, theme,toggleTheme, } = use(AuthContext)
   const handleSignOut = () => {
@@ -37,30 +38,36 @@ const NavBar = () => {
               <Tooltip id="view-tooltip" />
             </div>
           )}
-              <li><NavLink to={'./'}>Home</NavLink></li>
-              <li><NavLink to={'/fridge'}>Fridge</NavLink></li>
-              <li><NavLink to={'/about'}>About</NavLink></li>
+              <li className='hover:bg-green-600 hover:text-white'><NavLink to={'./'}>Home</NavLink></li>
+              <li className='hover:bg-green-600 hover:text-white'><NavLink to={'/fridge'}>Fridge</NavLink></li>
+              <li className='hover:bg-green-600 hover:text-white'><NavLink to={'/about'}>About</NavLink></li>
               {
-                user && <li>
+                user && <li className='hover:bg-green-600 hover:text-white'>
                   <NavLink to={'/addfood'}>Add Food</NavLink>
                 </li>
               }
               {
-                user && <li>
+                user && <li className='hover:bg-green-600 hover:text-white'>
                   <NavLink to={'/myfooditems'}>My Food Items</NavLink>
                 </li>
               }
+              <li>
+                 <div className='inline-flex hover:bg-white gap-2'>
+                <Link to={'/register'} className={'btn btn-sm bg-green-700 dark:bg-white shadow shadow-green-600 dark:text-black text-white rounded-4xl dark:shadow-white'}>Register</Link>
+                <Link to={'/signin'} className={'btn btn-sm rounded-4xl dark:border-white shadow shadow-black dark:shadow-white dark:shadow'}>Sign In</Link>
+              </div>
+              </li>
             </ul>
           </div>
-          <Link to={'./'} class="text-xl">SnackTrack</Link>
+          <div className='flex lg:ml-12 md:py-2 gap-1'>
+            <img className='w-12 h-12' src={foodWatch} alt="" />
+            <Link to={'./'} class="my-auto text-xl md:text-2xl lg:text-3xl">SnackTrack</Link>
+          </div>
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal px-1">
            <li><NavLink to={'./'}>Home</NavLink></li>
               <li><NavLink to={'/fridge'}>Fridge</NavLink></li>
-              <li>
-                <NavLink to={'/blog'}>Blog</NavLink>
-              </li>
               <li><NavLink to={'/about'}>About</NavLink></li>
               {
                 user && <li>
@@ -92,9 +99,9 @@ const NavBar = () => {
             user ? <button onClick={handleSignOut} className='btn rounded-3xl bg-white text-black'>
               Sign Out
             </button> :
-              <div className='inline-flex gap-2'>
+              <div className='hidden md:inline-flex gap-2'>
                 <Link to={'/register'} className={'btn bg-green-700 dark:bg-white shadow shadow-green-600 dark:text-black text-white rounded-4xl dark:shadow-white'}>Register</Link>
-                <Link to={'/signin'} className={'btn rounded-4xl dark:border-white shadow shadow-black dark:shadow-white dark:shadow'}>Sing In</Link>
+                <Link to={'/signin'} className={'btn rounded-4xl dark:border-white shadow shadow-black dark:shadow-white dark:shadow'}>Sign In</Link>
               </div>
           }
           <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>

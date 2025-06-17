@@ -12,6 +12,7 @@ import MyFood from "../pages/MyFood/MyFood";
 import PrivateRoute from "../context/AuthContext/PrivateRoute";
 import UpdateFood from "../pages/updateFood/UpdateFood";
 import ErrorPage from "../pages/error/ErrorPage";
+import About from "../pages/about/About";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
     hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
       <span className="loading loading-spinner text-success"></span>
     </div>,
+      },
+      {
+        path:'/about',
+        Component:About
       }
     ]
   },

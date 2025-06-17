@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/AuthContext/AuthContext';
 
 const MyFood = () => {
 const {user}=use(AuthContext)
+console.log(user)
 const {myFoodsPromise}=useFoodsAPI()
     return (
         <div>

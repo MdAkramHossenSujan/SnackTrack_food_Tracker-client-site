@@ -8,6 +8,10 @@ const AllFood = () => {
     const [loading, setLoading] = useState(true);
     const [searchText, setSearchText] = useState('');
     useEffect(() => {
+    document.title = `Fridge | SnackTrack`; 
+    window.scrollTo(0, 0); 
+  }, []);
+    useEffect(() => {
         setLoading(true);
         const url = category
             ? `https://food-expiry-tracker-server.vercel.app/fridge?category=${category}`

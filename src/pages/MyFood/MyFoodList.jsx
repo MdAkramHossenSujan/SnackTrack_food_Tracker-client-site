@@ -4,8 +4,12 @@ import toast from 'react-hot-toast';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import { Link } from 'react-router';
 import { Tooltip } from 'react-tooltip';
+import { AuthContext } from '../../context/AuthContext/AuthContext';
+import Swal from 'sweetalert2';
 
 const MyFoodList = ({ myFoodsPromise }) => {
+  const {user}=use(AuthContext)
+  console.log(user)
   const resolvedFoods = use(myFoodsPromise);
   const [foods, setFoods] = useState([]);
   useEffect(() => {
@@ -13,18 +17,37 @@ const MyFoodList = ({ myFoodsPromise }) => {
   }, [resolvedFoods]);
 
   const handleDelete = (id) => {
-    axios
-      .delete(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${id}`)
-      .then((res) => {
+     Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+     axios
+      .delete(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${id}`,{
+  headers: {
+    Authorization: `Bearer ${user.accessToken}`
+  }
+}).then((res) => {
         if (res.data.deletedCount > 0) {
-          toast.success('Item deleted successfully');
+          Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    })
           const remaining = foods.filter(food => food._id !== id);
           setFoods(remaining);
         } else {
           toast.error('Item not found or already deleted');
         }
       })
-      .catch((err) => {
+    ;
+  }
+}).catch((err) => {
         console.error(err);
         toast.error('Something went wrong');
       });

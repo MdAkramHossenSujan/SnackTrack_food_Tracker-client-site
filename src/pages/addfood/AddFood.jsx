@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import board from '../../assets/Image/board2.jpg';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-hot-toast';
@@ -7,6 +7,10 @@ import { AuthContext } from '../../context/AuthContext/AuthContext';
 import axios from 'axios';
 
 const AddFood = () => {
+      useEffect(() => {
+    document.title = `Add Food | SnackTrack`; 
+    window.scrollTo(0, 0); 
+  }, []);
     const { user } = use(AuthContext)
     // console.log(user)
     const navigate = useNavigate();

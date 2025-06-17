@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouteError, Link } from 'react-router';
 import Lottie from 'lottie-react';
 import errorAnimation from '../../assets/Animation/Animation - 1750050106340.json';
 
 const ErrorPage = () => {
   const error = useRouteError();
-
+useEffect(() => {
+    document.title = `404 Error | SnackTrack`; 
+    window.scrollTo(0, 0); 
+  }, []);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center bg-white dark:bg-neutral-900">
       <Lottie

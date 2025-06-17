@@ -25,7 +25,7 @@ const UpdateFood = () => {
         axios.put(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${food._id}`, data,
             {
                 headers: {
-                    Authorization: `Bearer ${user.accessToken}` // Ensure this is set
+                    Authorization: `Bearer ${user.accessToken}`
                 }
             }
         ).then(res => {
@@ -108,7 +108,7 @@ const UpdateFood = () => {
                         <label className="label text-gray-200">User Email</label>
                         <input name="userEmail" type="email" className="input w-full input-bordered" readOnly value={user?.email || ''} />
                     </div>
-                    <button type="submit" className="btn btn-primary mt-4 bg-green-800 hover:bg-white hover:text-black border-none w-full">Add Food</button>
+                    <button type="submit" className="btn btn-primary mt-4 bg-green-800 hover:bg-white hover:text-black border-none w-full">Update Food</button>
                 </form>
             </div>
         </div>

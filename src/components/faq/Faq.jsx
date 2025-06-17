@@ -1,18 +1,7 @@
 import React from 'react';
 
 const Faq = () => {
-    return (
-       <div className="max-w-6xl mx-auto px-4">
-  <div className="text-center mb-12">
-    <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-4">
-      Frequently Asked Questions
-    </h2>
-    <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-      Learn more about how our Food Expiry Tracker works, its features, and how it helps reduce food waste.
-    </p>
-  </div>
-  <div className="space-y-6">
-    {[
+    const faq=[
       {
         question: "What is the Food Expiry Tracker System?",
         answer:
@@ -43,7 +32,19 @@ const Faq = () => {
         answer:
           "It’s ideal for individuals, families, meal preppers, and even small food businesses who want better control over food usage and expiry tracking.",
       },
-    ].map((faq, index) => (
+    ]
+    return (
+       <div className="max-w-6xl py-12 mx-auto px-6">
+  <div className="text-center mb-12">
+    <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+      Frequently Asked Questions
+    </h2>
+    <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+      Learn more about how our Food Expiry Tracker works, its features, and how it helps reduce food waste.
+    </p>
+  </div>
+  <div className="space-y-6">
+    {faq.map((faq, index) => (
       <div
         key={index}
         className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition"
