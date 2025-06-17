@@ -52,10 +52,15 @@ const NavBar = () => {
                 </li>
               }
               <li>
-                 <div className='inline-flex hover:bg-white gap-2'>
-                <Link to={'/register'} className={'btn btn-sm bg-green-700 dark:bg-white shadow shadow-green-600 dark:text-black text-white rounded-4xl dark:shadow-white'}>Register</Link>
-                <Link to={'/signin'} className={'btn btn-sm rounded-4xl dark:border-white shadow shadow-black dark:shadow-white dark:shadow'}>Sign In</Link>
+                 {
+            user ? <button onClick={handleSignOut} className='btn lg:hidden rounded-3xl bg-white text-black'>
+              Sign Out
+            </button> :
+              <div className='lg:hidden hover:bg-white md:inline-flex gap-2'>
+                <Link to={'/register'} className={'btn bg-green-700 dark:bg-white shadow shadow-green-600 dark:text-black text-white rounded-4xl dark:shadow-white'}>Register</Link>
+                <Link to={'/signin'} className={'btn rounded-4xl dark:border-white shadow shadow-black dark:shadow-white dark:shadow'}>Sign In</Link>
               </div>
+          }
               </li>
             </ul>
           </div>
@@ -96,7 +101,7 @@ const NavBar = () => {
             </div>
           )}
           {
-            user ? <button onClick={handleSignOut} className='btn rounded-3xl bg-white text-black'>
+            user ? <button onClick={handleSignOut} className='btn hidden md:block rounded-3xl bg-white text-black'>
               Sign Out
             </button> :
               <div className='hidden md:inline-flex gap-2'>
