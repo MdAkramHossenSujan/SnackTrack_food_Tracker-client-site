@@ -53,7 +53,7 @@ const NavBar = () => {
               }
               <li>
                  {
-            user ? <button onClick={handleSignOut} className='btn lg:hidden rounded-3xl bg-white text-black'>
+            user ? <button onClick={handleSignOut} className='btn md:hidden rounded-3xl bg-white text-black'>
               Sign Out
             </button> :
               <div className='lg:hidden hover:bg-white inline-flex gap-2'>

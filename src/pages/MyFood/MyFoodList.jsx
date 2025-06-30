@@ -6,7 +6,8 @@ import { Link } from 'react-router';
 import { Tooltip } from 'react-tooltip';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
-
+import noData from '../../assets/Animation/Animation - 1751316496789(No Data).json'
+import Lottie from 'lottie-react';
 const MyFoodList = ({ myFoodsPromise }) => {
   const {user}=use(AuthContext)
   console.log(user)
@@ -52,11 +53,21 @@ const MyFoodList = ({ myFoodsPromise }) => {
         toast.error('Something went wrong');
       });
   };
-  if (foods.length == 0) {
-    return <div className='min-h-screen'>
-      <p>No food Items Here</p>
+ if (foods.length === 0) {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-base-100">
+      <div className="w-48 md:w-96 lg:w-[540px]">
+        <Lottie animationData={noData} loop autoplay />
+      </div>
+      <h3 className="text-2xl font-semibold mt-6 text-center text-gray-600">
+        No food items found.
+      </h3>
+      <p className="mt-2 max-w-md text-center text-gray-400">
+        You haven't added any food items yet. Try adding some to see them here!
+      </p>
     </div>
-  }
+  );
+}
   return (
     <div className="overflow-x-auto px-4 py-28">
       <table className="table max-w-7xl mx-auto">
