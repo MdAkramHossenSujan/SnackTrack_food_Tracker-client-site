@@ -77,7 +77,7 @@ useEffect(() => {
           <img
             src={food.foodImage}
             alt={food.foodTitle}
-            className="w-full max-h-[350px] object-cover rounded-xl shadow-md"
+            className="max-w-full max-h-[450px] object-cover rounded-xl shadow-md"
           />
           <h1 className="text-3xl font-bold">{food.foodTitle}</h1>
           <p className="text-sm text-gray-500 dark:text-gray-300 font-medium">{food.brand}</p>
