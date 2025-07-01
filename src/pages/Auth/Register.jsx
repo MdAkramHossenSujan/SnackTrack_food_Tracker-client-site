@@ -8,6 +8,7 @@ import SocialLogin from '../Shared/SocialLogin';
 import { Link, useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 import bg from '../../assets/Image/pexels-freestockpro-12932215.jpg';
+import axios from 'axios';
 
 const Register = () => {
     const [error, setError] = useState('');
@@ -15,11 +16,21 @@ const Register = () => {
     const [passError, setPassError] = useState('');
     const { createUser, updateUser, resetPass } = use(AuthContext);
     const [email, setEmail] = useState('');
+    const [photoURL,setPhotoURL]=useState('')
     const navigate = useNavigate();
 useEffect(() => {
     document.title = `Register | SnackTrack`; 
     window.scrollTo(0, 0); 
   }, []);
+  const handleImageUpload = async (e) => {
+        const image = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', image)
+        console.log(formData)
+
+        const res = await axios.post(`https://api.imgbb.com/1/upload?&key=${import.meta.env.VITE_IMGBB_API}`, formData)
+        setPhotoURL(res.data.data.url)
+    }
     const handleRegister = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -53,7 +64,7 @@ useEffect(() => {
 
         createUser(data.email, data.password)
             .then(() => {
-                updateUser({ displayName: name, photoURL: data.photoURL })
+                updateUser({ displayName: name, photoURL:photoURL })
                     .then(() => {
                         navigate('/myfooditems');
                         toast.success('Registered Successfully');
@@ -119,11 +130,9 @@ useEffect(() => {
             </label>
             <input
               required
-              type="url"
-              name="photoURL"
-              className="input input-bordered w-full bg-base-300 dark:bg-gray-800 text-gray-900 dark:text-white
-                         border-gray-300 dark:border-gray-600
-                         focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="file"
+              onChange={handleImageUpload}
+              className="w-full file-input text-black"
               placeholder="Photo URL"
             />
           </div>
