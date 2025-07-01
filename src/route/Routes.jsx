@@ -13,6 +13,10 @@ import PrivateRoute from "../context/AuthContext/PrivateRoute";
 import UpdateFood from "../pages/updateFood/UpdateFood";
 import ErrorPage from "../pages/error/ErrorPage";
 import About from "../pages/about/About";
+import DashBoard from "../Layout/DashBoard";
+import DashboardHome from "../pages/dashboard/DashboardHome";
+import MyAddedFood from "../pages/dashboard/MyAddedFood";
+
 
 export const router = createBrowserRouter([
   {
@@ -42,25 +46,25 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
           <AddFood></AddFood>
         </PrivateRoute>,
-    hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
-      <span className="loading loading-spinner text-success"></span>
-    </div>,
+        hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+          <span className="loading loading-spinner text-success"></span>
+        </div>,
       },
       {
         path: '/fridgeFoods/:id',
         Component: FoodDetails,
         loader: ({ params }) => fetch(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${params.id}`),
-    hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
-      <span className="loading loading-spinner text-success"></span>
-    </div>,
+        hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+          <span className="loading loading-spinner text-success"></span>
+        </div>,
       }, {
         path: '/myfooditems',
         element: <PrivateRoute>
           <MyFood></MyFood>
         </PrivateRoute>,
-    hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
-      <span className="loading loading-spinner text-success"></span>
-    </div>,
+        hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+          <span className="loading loading-spinner text-success"></span>
+        </div>,
       },
       {
         path: '/updateFood/:id',
@@ -68,14 +72,45 @@ export const router = createBrowserRouter([
           <UpdateFood></UpdateFood>
         </PrivateRoute>,
         loader: ({ params }) => fetch(`https://food-expiry-tracker-server.vercel.app/fridgeFoods/${params.id}`),
-    hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
-      <span className="loading loading-spinner text-success"></span>
-    </div>,
+        hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+          <span className="loading loading-spinner text-success"></span>
+        </div>,
       },
       {
-        path:'/about',
-        Component:About
+        path: '/about',
+        Component: About
       }
     ]
   },
+  {
+    path: '/dashboard',
+    Component: DashBoard,
+    hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
+      <span className="loading loading-spinner text-success"></span>
+    </div>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        index: true,
+        path: '/dashboard',
+        Component: DashboardHome
+      },
+      {
+        path:'/dashboard/myaddedfoods',
+        Component:MyAddedFood
+      },
+      {
+        path:'/dashboard/expired',
+        Component:MyAddedFood
+      },
+      {
+        path:'/dashboard/notexpired',
+        Component:MyAddedFood
+      },
+      {
+        path:'/dashboard/profile',
+        Component:MyAddedFood
+      }
+    ]
+  }
 ]);

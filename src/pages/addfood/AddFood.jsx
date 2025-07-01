@@ -1,4 +1,4 @@
-import React, { use, useEffect } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import board from '../../assets/Image/board2.jpg';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-hot-toast';
@@ -7,15 +7,25 @@ import { AuthContext } from '../../context/AuthContext/AuthContext';
 import axios from 'axios';
 
 const AddFood = () => {
-      useEffect(() => {
-    document.title = `Add Food | SnackTrack`; 
-    window.scrollTo(0, 0); 
-  }, []);
+     const [profile,setProfile]=useState('')
+    useEffect(() => {
+        document.title = `Add Food | SnackTrack`;
+        window.scrollTo(0, 0);
+    }, []);
     const { user } = use(AuthContext)
     // console.log(user)
     const navigate = useNavigate();
+const handleImageUpload = async (e) => {
+        const image = e.target.files[0]
+        console.log(image)
+        const formData = new FormData()
+        formData.append('image', image)
+        console.log(formData)
 
-    const handleAddFood = (e) => {
+        const res = await axios.post(`https://api.imgbb.com/1/upload?&key=${import.meta.env.VITE_IMGBB_API}`, formData)
+        setProfile(res.data.data.url)
+    }
+    const handleAddFood = async (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
@@ -24,6 +34,7 @@ const AddFood = () => {
         data.addedDate = new Date().toISOString();
         data.userEmail = user?.email;
         data.expiryDate = new Date(data.expiryDate).toISOString();
+        console.log(profile)
         axios.post('https://food-expiry-tracker-server.vercel.app/fridgeFoods', data,
             {
                 headers: {
@@ -56,8 +67,8 @@ const AddFood = () => {
 
                 <form onSubmit={handleAddFood} className="grid grid-cols-1 gap-4">
                     <div className="form-control flex gap-2">
-                        <label className="label text-gray-200">Food Image URL</label>
-                        <input name="foodImage" placeholder='Hostel URL of your image eg:http//...' type="url" className="input w-full input-bordered" required />
+                        <label className="label text-gray-200">Food Image</label>
+                        <input onChange={} type="file" className="file-input w-full input-bordered" required />
                     </div>
 
                     <div className="form-control flex gap-2">

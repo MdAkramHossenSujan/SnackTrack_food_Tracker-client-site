@@ -41,11 +41,15 @@ const NavBar = () => {
               <li className='hover:bg-green-600 hover:text-white'><NavLink to={'./'}>Home</NavLink></li>
               <li className='hover:bg-green-600 hover:text-white'><NavLink to={'/fridge'}>Fridge</NavLink></li>
               <li className='hover:bg-green-600 hover:text-white'><NavLink to={'/about'}>About</NavLink></li>
-              {
-                user && <li className='hover:bg-green-600 hover:text-white'>
+               <li className='hover:bg-green-600 hover:text-white'>
                   <NavLink to={'/addfood'}>Add Food</NavLink>
                 </li>
+                {
+                user &&  <li className='hover:bg-green-600 hover:text-white'>
+                  <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                </li>
               }
+              
               {
                 user && <li className='hover:bg-green-600 hover:text-white'>
                   <NavLink to={'/myfooditems'}>My Food Items</NavLink>
@@ -74,14 +78,19 @@ const NavBar = () => {
            <li><NavLink to={'./'}>Home</NavLink></li>
               <li><NavLink to={'/fridge'}>Fridge</NavLink></li>
               <li><NavLink to={'/about'}>About</NavLink></li>
-              {
-                user && <li>
+               <li>
                   <NavLink to={'/addfood'}>Add Food</NavLink>
                 </li>
-              }
+              
               {
                 user && <li>
                   <NavLink to={'/myfooditems'}>My Food Items</NavLink>
+                </li>
+                
+              }
+              {
+                user &&  <li className='hover:bg-green-600 hover:text-white'>
+                  <NavLink to={'/dashboard'}>Dashboard</NavLink>
                 </li>
               }
           </ul>
