@@ -20,7 +20,7 @@ const DashBoard = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col ">
                     {/* Page content here */}
-                    <div className="navbar lg:hidden bg-base-300 w-full">
+                    <div className="navbar lg:hidden fixed bg-base-300 w-full">
                         <div className="flex-none lg:hidden">
                             <label htmlFor="my-drawer-2" aria-label="open sidebar" className="btn btn-square btn-ghost">
                                 <svg
@@ -43,7 +43,7 @@ const DashBoard = () => {
                             <Link to={'/'} class="my-auto text-xl md:text-2xl lg:text-3xl">SnackTrack</Link>
                         </div>
                     </div>
-                    <div className='px-6 md:px-8'>
+                    <div className='px-6 py-18 lg:py-0 md:px-8'>
                         <Outlet />
                     </div>
                 </div>
@@ -51,7 +51,7 @@ const DashBoard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-                        <div className='flex lg:ml-12 md:py-2 px-6 gap-1'>
+                        <div className='flex lg:ml-12 md:py-2 gap-1'>
                             <img className='w-12 h-12' src={foodWatch} alt="" />
                             <Link to={'/'} className="my-auto text-xl md:text-2xl lg:text-3xl">SnackTrack</Link>
                         </div>
