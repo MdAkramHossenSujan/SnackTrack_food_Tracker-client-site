@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/AuthContext/AuthContext';
 import axios from 'axios';
 
 const AddFood = () => {
-     const [profile,setProfile]=useState('')
+     const [image,setImage]=useState('')
     useEffect(() => {
         document.title = `Add Food | SnackTrack`;
         window.scrollTo(0, 0);
@@ -17,13 +17,12 @@ const AddFood = () => {
     const navigate = useNavigate();
 const handleImageUpload = async (e) => {
         const image = e.target.files[0]
-        console.log(image)
         const formData = new FormData()
         formData.append('image', image)
         console.log(formData)
 
         const res = await axios.post(`https://api.imgbb.com/1/upload?&key=${import.meta.env.VITE_IMGBB_API}`, formData)
-        setProfile(res.data.data.url)
+        setImage(res.data.data.url)
     }
     const handleAddFood = async (e) => {
         e.preventDefault();
@@ -34,8 +33,12 @@ const handleImageUpload = async (e) => {
         data.addedDate = new Date().toISOString();
         data.userEmail = user?.email;
         data.expiryDate = new Date(data.expiryDate).toISOString();
-        console.log(profile)
-        axios.post('https://food-expiry-tracker-server.vercel.app/fridgeFoods', data,
+        const finalData={
+            ...data,
+            foodImage:image
+        }
+        console.log(finalData)
+        axios.post('https://food-expiry-tracker-server.vercel.app/fridgeFoods', finalData,
             {
                 headers: {
                     Authorization: `Bearer ${user.accessToken}` // Ensure this is set
@@ -68,7 +71,7 @@ const handleImageUpload = async (e) => {
                 <form onSubmit={handleAddFood} className="grid grid-cols-1 gap-4">
                     <div className="form-control flex gap-2">
                         <label className="label text-gray-200">Food Image</label>
-                        <input onChange={} type="file" className="file-input w-full input-bordered" required />
+                        <input onChange={handleImageUpload} type="file" className="file-input w-full input-bordered" required />
                     </div>
 
                     <div className="form-control flex gap-2">
@@ -86,6 +89,7 @@ const handleImageUpload = async (e) => {
                             <option>Snacks</option>
                             <option>Spices</option>
                             <option>Drinks</option>
+                            <option>Fruit</option>
                         </select>
                     </div>
 
