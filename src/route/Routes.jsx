@@ -16,6 +16,9 @@ import About from "../pages/about/About";
 import DashBoard from "../Layout/DashBoard";
 import DashboardHome from "../pages/dashboard/DashboardHome";
 import MyAddedFood from "../pages/dashboard/MyAddedFood";
+import Expired from "../pages/dashboard/Expired";
+import NotExpired from "../pages/dashboard/NotExpired";
+import Profile from "../pages/dashboard/Profile";
 
 
 export const router = createBrowserRouter([
@@ -101,15 +104,15 @@ export const router = createBrowserRouter([
       },
       {
         path:'/dashboard/expired',
-        Component:MyAddedFood
+        Component:Expired
       },
       {
         path:'/dashboard/notexpired',
-        Component:MyAddedFood
+        Component:NotExpired
       },
       {
         path:'/dashboard/profile',
-        Component:MyAddedFood
+        Component:Profile
       }
     ]
   }

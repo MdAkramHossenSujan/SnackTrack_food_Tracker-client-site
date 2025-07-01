@@ -54,7 +54,6 @@ const AuthProvider = ({ children }) => {
                     // console.log(res.data)
                 }).catch(error => console.log(error))
             }
-            console.log(currentUser.accessToken)
         })
         return () => {
             unSubscribe()

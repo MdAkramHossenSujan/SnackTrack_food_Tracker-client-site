@@ -33,7 +33,7 @@ const ExpiredCard = ({ nearestPromise }) => {
           <SwiperSlide key={index} className="flex">
             <div className="h-full w-full">
               <div
-        
+
                 className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-400 rounded-2xl p-4 flex flex-col justify-between h-full"
               >
                 {/* Top Info */}
@@ -56,7 +56,7 @@ const ExpiredCard = ({ nearestPromise }) => {
                 </div>
 
                 {/* Bottom Content */}
-                <div className="space-y-2 h-[176px]">
+                <div className="space-y-2">
                   <div className="flex justify-between items-center">
                     <h2 className="text-xl font-bold text-gray-800 dark:text-white">
                       {food.foodTitle}
@@ -65,7 +65,7 @@ const ExpiredCard = ({ nearestPromise }) => {
                       <MdFavorite className="text-red-500 text-lg" />
                     )}
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">{food.description}</p>
+                  <p className="text-gray-600 h-12 line-clamp-1 dark:text-gray-300 text-sm">{food.description}</p>
                   <p className="text-sm font-medium text-gray-700 dark:text-gray-400">
                     Quantity: {food.quantity} {food.unit}
                   </p>
@@ -74,10 +74,10 @@ const ExpiredCard = ({ nearestPromise }) => {
                   </p>
                   <div className="pt-2 flex justify-end">
                     <Link to={`/fridgeFoods/${food._id}`}>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-white hover:text-black cursor-pointer text-white text-sm font-semibold rounded-lg transition">
-                      <FaEye />
-                      See Details
-                    </button>
+                      <button className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-lg transition">
+                        <FaEye />
+                        See Details
+                      </button>
                     </Link>
                   </div>
                 </div>

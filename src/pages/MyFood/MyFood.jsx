@@ -12,7 +12,7 @@ const {myFoodsPromise}=useFoodsAPI()
             <Suspense fallback={<div className='min-h-screen max-w-screen mx-auto flex justify-center'>
            <span className="loading loading-spinner text-success"></span>
         </div>}>
-                <MyFoodList myFoodsPromise={myFoodsPromise(user.email,user.accessToken)}>
+                <MyFoodList myFoodsPromise={myFoodsPromise(user.email)}>
 
                 </MyFoodList>
             </Suspense>

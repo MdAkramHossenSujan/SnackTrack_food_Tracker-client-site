@@ -60,7 +60,7 @@ const NavBar = () => {
             user ? <button onClick={handleSignOut} className='btn md:hidden rounded-3xl bg-white text-black'>
               Sign Out
             </button> :
-              <div className='lg:hidden hover:bg-white inline-flex gap-2'>
+              <div className='md:hidden hover:bg-white inline-flex gap-2'>
                 <Link to={'/register'} className={'btn bg-green-700 dark:bg-white shadow shadow-green-600 dark:text-black text-white rounded-4xl dark:shadow-white'}>Register</Link>
                 <Link to={'/signin'} className={'btn rounded-4xl dark:border-white shadow shadow-black dark:shadow-white dark:shadow'}>Sign In</Link>
               </div>
@@ -119,8 +119,8 @@ const NavBar = () => {
               </div>
           }
           <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
-            <Sun size={30} className="swap-on text-yellow-500" />
-            <Moon size={30} className="swap-off" />
+            <Moon size={30} className="swap-on text-gray-400" />
+            <Sun size={30} className="swap-off text-yellow-500" />
           </label>
         </div>
       </div>

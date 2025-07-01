@@ -6,6 +6,7 @@ const axiosInstance = axios.create({
 })
 const useAxios = () => {
     const { user, logOut } = use(AuthContext)
+    
     axiosInstance.interceptors.request.use(config => {
         config.headers.authorization = `Bearer ${user.accessToken}`
         return config;
@@ -15,7 +16,6 @@ const useAxios = () => {
     }, error => {
         if (error.status === 401 || error.status === 403) {
             logOut().then(() => {
-                // console.log('Signed Out for 401')
             }).catch(err => {
                 console.log(err)
             })

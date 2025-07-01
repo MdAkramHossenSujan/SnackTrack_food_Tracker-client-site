@@ -132,7 +132,7 @@ useEffect(() => {
               required
               type="file"
               onChange={handleImageUpload}
-              className="w-full file-input text-black"
+              className="w-full file-input text-black dark:text-white"
               placeholder="Photo URL"
             />
           </div>
@@ -190,8 +190,8 @@ useEffect(() => {
 
           <button
             type="submit"
-            className="btn btn-primary w-full
-                       bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600
+            className="btn btn-primary w-full border-none
+                       bg-green-600 hover:bg-green-700 
                        text-white"
           >
             Register
