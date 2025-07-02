@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
@@ -11,7 +11,10 @@ import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 const MyAddedFood = () => {
   const { user } = useContext(AuthContext);
   const queryClient = useQueryClient();
-
+ useEffect(() => {
+            document.title = `My Added Foods | dashboard | SnackTrack`;
+            window.scrollTo(0, 0);
+        }, []);
   const { data, isLoading, isError } = useQuery({
     queryKey: ['fridgeFoods'],
     queryFn: async () => {

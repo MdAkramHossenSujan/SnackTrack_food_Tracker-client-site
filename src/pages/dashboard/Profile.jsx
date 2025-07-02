@@ -1,4 +1,4 @@
-import React, { useState, use } from 'react';
+import React, { useState, use, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { motion } from 'framer-motion';
 import { Pencil, Mail } from 'lucide-react';
@@ -6,6 +6,10 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const Profile = () => {
+     useEffect(() => {
+                document.title = `My Profile | Dashboard | SnackTrack`;
+                window.scrollTo(0, 0);
+            }, []);
   const { user ,updateUser} = use(AuthContext);
   const [editing, setEditing] = useState(false);
   const [photoURL,setPhotoURL]=useState('')
@@ -60,7 +64,7 @@ console.log(user)
               'https://via.placeholder.com/150?text=No+Photo'
             }
             alt="User Avatar"
-            className="w-24 h-24 lg:w-36 lg:h-36 rounded-full border-4 border-green-400 dark:border-green-600 shadow-md hover:scale-105 transition-transform duration-300"
+            className="w-36 h-36 lg:w-48 lg:h-48 rounded-full border-4 border-green-400 dark:border-green-600 shadow-md hover:scale-105 transition-transform duration-300"
           />
           <h2 className="text-2xl font-semibold">
             {user?.displayName || 'No Name'}

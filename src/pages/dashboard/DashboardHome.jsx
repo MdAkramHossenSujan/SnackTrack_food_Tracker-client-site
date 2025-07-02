@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
@@ -21,6 +21,10 @@ import {
 const COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'];
 
 const DashboardHome = () => {
+     useEffect(() => {
+            document.title = `Dashboard | SnackTrack`;
+            window.scrollTo(0, 0);
+        }, []);
     const { user } = useContext(AuthContext);
     const { data, isLoading, isError } = useQuery({
         queryKey: ['fridgeFoods'],

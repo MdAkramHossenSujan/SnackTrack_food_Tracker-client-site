@@ -1,8 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import noData from '../../assets/Animation/Animation - 1751316496789(No Data).json';
 const NotExpired = () => {
+   useEffect(() => {
+              document.title = `Not Expired | Dashboard | SnackTrack`;
+              window.scrollTo(0, 0);
+          }, []);
   const { data, isLoading, isError } = useQuery({
     queryKey: ['fridgeFoods'],
     queryFn: async () => {
