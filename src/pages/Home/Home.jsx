@@ -5,33 +5,41 @@ import ExpiredFood from '../../components/sectionone/ExpiredFood';
 import Nearest from '../../components/NearestExpiryFood/Nearest';
 import Faq from '../../components/faq/Faq';
 import CommentSection from '../../components/comment/Comment';
+import BenefitsSection from '../../components/whyuseus/BenefitSection';
+import IndustriesWeServe from '../../components/IndustriesWeServe';
 
 
 
 const Home = () => {
-      useEffect(() => {
-    document.title = `Home | Food App`; // Set page title
-    window.scrollTo(0, 0); // Scroll to top
-  }, []);
+    useEffect(() => {
+        document.title = `Home | Food App`; // Set page title
+        window.scrollTo(0, 0); // Scroll to top
+    }, []);
     return (
         <div>
             <div>
-                <Banner/>
+                <Banner />
             </div>
             <div>
-                <HowItWorks/>
+                <HowItWorks />
             </div>
             <div>
-                <Nearest/>
+                <BenefitsSection/>
             </div>
             <div>
-                <ExpiredFood/>
+                <Nearest />
             </div>
             <div>
-<CommentSection/>
+                <ExpiredFood />
             </div>
             <div>
-                <Faq/>
+                <CommentSection />
+            </div>
+            <div>
+                <IndustriesWeServe/>
+            </div>
+            <div>
+                <Faq />
             </div>
         </div>
     );
