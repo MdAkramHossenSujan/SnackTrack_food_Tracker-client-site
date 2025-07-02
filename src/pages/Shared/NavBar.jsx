@@ -89,7 +89,7 @@ const NavBar = () => {
                 
               }
               {
-                user &&  <li className='hover:bg-green-600 hover:text-white'>
+                user &&  <li className=''>
                   <NavLink to={'/dashboard'}>Dashboard</NavLink>
                 </li>
               }

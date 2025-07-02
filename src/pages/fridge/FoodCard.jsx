@@ -1,58 +1,103 @@
 import { FaExclamationTriangle, FaEye } from 'react-icons/fa';
-import { format } from 'date-fns';
 import { Link } from 'react-router';
 
 const FoodCard = ({ food }) => {
-    const {
-        foodImage,
-        foodTitle,
-        category,
-        quantity,
-        expiryDate,
-        unit,
-        _id
-    } = food;
+  const {
+    foodImage,
+    foodTitle,
+    category,
+    quantity,
+    expiryDate,
+    unit,
+    _id,
+  } = food;
 
-    const now = new Date();
-    const isExpired = new Date(expiryDate) < now;
-    const formattedExpiry = format(new Date(expiryDate), 'MMM dd, yyyy');
+  const now = new Date();
+  const isExpired = new Date(expiryDate) < now;
 
-    return (
-        <div className="relative bg-[#022105] dark:bg-[#0c0c19] text-white rounded-xl p-4 pt-12 shadow-lg hover:shadow-xl transition duration-300">
-            {/* Food Image (Rounded & Partly Outside) */}
-            <div className="absolute -top-14 left-1/2 transform -translate-x-1/2">
-                <img
-                    src={foodImage}
-                    alt={foodTitle}
-                    className="w-30 hover:scale-120 h-30 object-cover rounded-full border-4 border-white shadow-md"
-                />
-            </div>
+  return (
+    <div
+      className="
+        relative 
+        bg-gradient-to-br from-[#1d3e2d] to-[#12744a]
+        dark:from-[#0c0c19] dark:to-[#1f1f3a] 
+        text-white 
+        rounded-2xl 
+        dark:border-gray-500 dark:border
+        p-6 
+        pt-16 
+        shadow-xl 
+        hover:scale-[1.02] 
+        hover:-translate-y-2
+        transition 
+        duration-300 
+        ease-in-out
+      "
+    >
+      {/* Decorative blurred circle */}
+      <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-green-400 opacity-20 blur-3xl pointer-events-none"></div>
 
-            <div className="mt-10 text-center md:h-[119px]">
-                {isExpired && (
-                    <div className=" bg-red-600 mx-auto my-1 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1 text-center w-[80px]">
-                        <FaExclamationTriangle size={12} />
-                        Expired
-                    </div>
-                )}
-                <h2 className="text-lg font-semibold">{foodTitle}</h2>
-                <p className="text-sm text-gray-300">Category: {category}</p>
-                <p className="text-sm text-gray-300 mb-1">
-                    Quantity: {quantity} {unit}
-                </p>
-                <p className="text-sm text-gray-400">Expires: {formattedExpiry}</p>
-            </div>
+      {/* Food Image */}
+      <div className="absolute -top-14 left-1/2 transform -translate-x-1/2">
+        <img
+          src={foodImage}
+          alt={foodTitle}
+          className="
+            w-28 h-28 
+            object-cover 
+            rounded-full 
+            border-2 border-gray-300 
+            shadow-lg 
+            transition-transform 
+            duration-300 
+            hover:scale-110 
+            hover:shadow-2xl
+          "
+        />
+      </div>
 
-            {/* See Details Button */}
-            <Link to={`/fridgeFoods/${_id}`}>
-            <button className="mt-4 w-full flex items-center cursor-pointer justify-center gap-2 bg-white text-[#2f2a2a] hover:bg-gray-800 hover:text-white font-medium text-sm py-2 rounded-lg transition">
-                <FaEye />
-                See Details
-            </button>
-            </Link>
-        </div>
-    );
+      <div className="mt-4 text-center space-y-2 md:min-h-[90px]">
+        {isExpired && (
+          <div className="inline-flex items-center gap-2 text-xs px-3 py-1 bg-gradient-to-r from-red-600 to-red-400 text-white rounded-full shadow">
+            <FaExclamationTriangle size={12} />
+            <span>Expired</span>
+          </div>
+        )}
+
+        <h2 className="text-lg md:text-xl font-bold text-green-100">{foodTitle}</h2>
+        <p className="text-sm text-green-200">Category: {category}</p>
+        <p className="text-sm text-green-200">
+          Quantity: {quantity} {unit}
+        </p>
+      </div>
+
+      <Link to={`/fridgeFoods/${_id}`}>
+        <button
+          className="
+            mt-5 w-full flex items-center justify-center gap-2 
+            bg-white 
+            hover:bg-green-600 
+            text-[#1d3e2d] 
+            hover:text-white 
+            font-semibold 
+            text-sm 
+            py-2.5 
+            rounded-xl 
+            shadow 
+            hover:shadow-lg 
+            transition-all
+            duration-300
+          "
+        >
+          <FaEye className="transition-transform duration-300 cursor-pointer group-hover:translate-x-1" />
+          See Details
+        </button>
+      </Link>
+    </div>
+  );
 };
 
 export default FoodCard;
+
+
 

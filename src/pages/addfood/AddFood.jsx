@@ -57,79 +57,165 @@ const handleImageUpload = async (e) => {
     };
 
     return (
-        <div className="relative min-h-screen py-20 flex items-center justify-center p-2">
-            <div
-                className="absolute inset-0 bg-cover bg-center z-0"
-                style={{ backgroundImage: `url(${board})` }}
-            ></div>
+  <div className="relative min-h-screen flex justify-center items-center py-24 px-2 md:px-4">
+    {/* Crisp Background Image */}
+    <div
+      className="absolute inset-0 bg-cover bg-center"
+      style={{ backgroundImage: `url(${board})` }}
+    >
+      <div className="absolute inset-0 bg-black/60"></div>
+    </div>
 
-            <div className="relative z-10 p-4 rounded-lg max-w-3xl w-full">
-                <h2 className="text-3xl text-white  font-bold text-center mb-6 flex items-center justify-center gap-2">
-                    <FaPlusCircle className="dark:text-blue-600" /> Add New Food Item
-                </h2>
+    {/* Solid Card */}
+    <div className="relative z-10 w-full max-w-3xl rounded-2xl shadow-2xl md:p-8 p-4 ">
+      <h2 className="text-center text-3xl md:text-4xl font-bold mb-8 text-green-500 dark:text-green-300 flex justify-center items-center gap-2">
+        <FaPlusCircle /> Add New Food Item
+      </h2>
 
-                <form onSubmit={handleAddFood} className="grid grid-cols-1 gap-4">
-                    <div className="form-control flex gap-2">
-                        <label className="label text-gray-200">Food Image</label>
-                        <input onChange={handleImageUpload} type="file" className="file-input w-full input-bordered" required />
-                    </div>
-
-                    <div className="form-control flex gap-2">
-                        <label className="label text-gray-200">Food Title</label>
-                        <input name="foodTitle" placeholder='Pick a title of your food' type="text" className="input w-full input-bordered" required />
-                    </div>
-
-                    <div className="form-control flex gap-2">
-                        <label className="label text-gray-200">Category</label>
-                        <select name="category" className="select select-bordered w-full" required>
-                            <option disabled value="">Select Category</option>
-                            <option>Dairy</option>
-                            <option>Meat</option>
-                            <option>Vegetables</option>
-                            <option>Snacks</option>
-                            <option>Spices</option>
-                            <option>Drinks</option>
-                            <option>Fruit</option>
-                        </select>
-                    </div>
-
-                    <div className="form-control flex gap-2">
-                        <label className="label text-gray-200">Quantity of the products</label>
-                        <input name="quantity" type="number" min="1" placeholder='Write amount of your product' className="w-full input input-bordered" required />
-                    </div>
-
-                    <div className="form-control flex gap-2">
-                        <label className="label text-gray-200">Unit of the products</label>
-                        <input name="unit" type="text" placeholder="e.g. kg, pcs, pack" className="input w-full input-bordered" required />
-                    </div>
-                    <div className='flex justify-between'>
-                        <div className="form-control flex gap-2">
-                            <label className="label text-gray-200">Storage Location</label>
-                            <input name="storageLocation" type="text" value={'Fridge'} className="input w-full input-bordered" readOnly />
-                        </div>
-                        <div className="form-control flex gap-2">
-                            <label className="label text-gray-200">Brand</label>
-                            <input name="brand" type="text" placeholder="Brand of the product" className="input w-full input-bordered" required />
-                        </div>
-                    </div>
-                    <div className="form-control flex gap-1">
-                        <label className="label text-gray-200">Expiry Date</label>
-                        <input name="expiryDate" type="date" className="input w-full input-bordered" required />
-                    </div>
-
-                    <div className="form-control space-y-0.5">
-                        <label className="label text-white">Description</label>
-                        <textarea name="description" placeholder='Write Your opinion and quality of Food.......' rows="3" className="textarea w-full textarea-bordered" required></textarea>
-                    </div>
-                    <div className="form-control flex gap-1">
-                        <label className="label text-gray-200">User Email</label>
-                        <input name="userEmail" type="email" className="input w-full input-bordered" readOnly value={user?.email || ''} />
-                    </div>
-                    <button type="submit" className="btn btn-primary mt-4 bg-green-800 hover:bg-white hover:text-black border-none w-full">Add Food</button>
-                </form>
-            </div>
+      <form onSubmit={handleAddFood} className="grid grid-cols-1 gap-6">
+        {/* Image Upload */}
+        <div>
+          <label className="block text-gray-200 mb-1">Food Image</label>
+          <input
+            onChange={handleImageUpload}
+            type="file"
+            className="file-input file-input-bordered w-full"
+            required
+          />
         </div>
-    );
+
+        {/* Title */}
+        <div>
+          <label className="block text-gray-200 mb-1">Food Title</label>
+          <input
+            name="foodTitle"
+            type="text"
+            placeholder="Pick a title of your food"
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Category */}
+        <div>
+          <label className="block text-gray-200 mb-1">Category</label>
+          <select
+            name="category"
+            className="select select-bordered w-full"
+            required
+          >
+            <option disabled value="">
+              Select Category
+            </option>
+            <option>Dairy</option>
+            <option>Meat</option>
+            <option>Vegetables</option>
+            <option>Snacks</option>
+            <option>Spices</option>
+            <option>Drinks</option>
+            <option>Fruit</option>
+            <option>Oil</option>
+          </select>
+        </div>
+
+        {/* Quantity */}
+        <div>
+          <label className="block text-gray-200 mb-1">Quantity</label>
+          <input
+            name="quantity"
+            type="number"
+            min="1"
+            placeholder="Write amount of your product"
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Unit */}
+        <div>
+          <label className="block text-gray-200 mb-1">Unit</label>
+          <input
+            name="unit"
+            type="text"
+            placeholder="e.g. kg, pcs, pack"
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Storage & Brand */}
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-gray-200 mb-1">
+              Storage Location
+            </label>
+            <input
+              name="storageLocation"
+              type="text"
+              value="Fridge"
+              readOnly
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-200 mb-1">Brand</label>
+            <input
+              name="brand"
+              type="text"
+              placeholder="Brand of the product"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+        </div>
+
+        {/* Expiry Date */}
+        <div>
+          <label className="block text-gray-200 mb-1">Expiry Date</label>
+          <input
+            name="expiryDate"
+            type="date"
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Description */}
+        <div>
+          <label className="block text-gray-200 mb-1">Description</label>
+          <textarea
+            name="description"
+            rows="3"
+            placeholder="Write your opinion and quality of food..."
+            className="textarea textarea-bordered w-full"
+            required
+          ></textarea>
+        </div>
+
+        {/* User Email */}
+        <div>
+          <label className="block text-gray-200 mb-1">User Email</label>
+          <input
+            name="userEmail"
+            type="email"
+            readOnly
+            value={user?.email || ''}
+            className="input input-bordered w-full"
+          />
+        </div>
+
+        {/* Submit */}
+        <button
+          type="submit"
+          className="mt-4 w-full py-3 bg-green-700 hover:bg-green-800 text-white rounded-full font-bold transition duration-300 transform hover:scale-102 cursor-pointer shadow-lg hover:shadow-2xl"
+        >
+          Add Food
+        </button>
+      </form>
+    </div>
+  </div>
+);
+
 };
 
 export default AddFood;
