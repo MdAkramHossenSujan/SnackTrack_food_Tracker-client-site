@@ -61,7 +61,7 @@ const Banner = () => {
               </div>
 
               {/* Content */}
-              <div className="relative z-20 max-w-4xl px-6 md:px-20 text-center md:text-left">
+              <div className="relative z-20 max-w-4xl lg:max-w-6xl px-6 md:px-20 text-center md:text-left">
                 <motion.h4
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 0.8, y: 0 }}
@@ -89,25 +89,33 @@ const Banner = () => {
                   {slide.text}
                 </motion.p>
 
+             
                 <motion.button
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 1.2 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold rounded-3xl px-8 py-3 md:px-12 md:py-4 shadow-lg hover:shadow-2xl transition"
-                >
-                  {slide.btn}
-                  <svg
-                    className="ml-3 w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </motion.button>
+  initial={{ scale: 0.8, opacity: 0 }}
+  animate={{ scale: 1, opacity: 1 }}
+  transition={{ duration: 0.5, delay: 1.2 }}
+  whileHover={{ scale: 1.05 }}
+  onClick={() => {
+    document
+      .getElementById("how-it-works")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }}
+  className="inline-flex items-center cursor-pointer justify-center bg-green-600 hover:bg-green-700 text-white font-semibold rounded-3xl px-8 py-3 md:px-12 md:py-4 shadow-lg hover:shadow-2xl transition"
+>
+  {slide.btn}
+  <svg
+    className="ml-3 w-5 h-5"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path>
+  </svg>
+</motion.button>
+
+          
               </div>
             </div>
           </SwiperSlide>

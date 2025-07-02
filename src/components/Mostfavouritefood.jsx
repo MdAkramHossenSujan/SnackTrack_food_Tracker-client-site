@@ -59,10 +59,6 @@ const MostFavoriteFoods = () => {
               <p className="text-sm text-gray-500 dark:text-gray-300">
                 {food.description.slice(0, 80)}...
               </p>
-              <div className="flex flex-wrap justify-between text-sm text-gray-600 dark:text-gray-400 mt-2">
-                <span className="badge badge-outline">{food.category}</span>
-                <span className="badge badge-outline">{food.brand}</span>
-              </div>
               <div className="flex justify-between mt-4 text-sm">
                 <p className="text-gray-700 dark:text-gray-300">
                   Qty: <span className="font-medium">{food.quantity} {food.unit}</span>
@@ -73,7 +69,7 @@ const MostFavoriteFoods = () => {
               </div>
               <Link
                 to={`/fridgeFoods/${food._id}`}
-                className="btn btn-sm btn-outline btn-accent w-full mt-4"
+                className="btn btn-sm btn-outline border-green-600 text-green-600 hover:text-white hover:bg-green-500 btn-accent w-full mt-4"
               >
                 See Details
               </Link>
