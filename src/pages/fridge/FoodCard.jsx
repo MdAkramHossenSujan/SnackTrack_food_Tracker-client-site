@@ -19,11 +19,10 @@ const FoodCard = ({ food }) => {
     <div
       className="
         relative 
-        bg-gradient-to-br from-[#1d3e2d] to-[#12744a]
-        dark:from-[#0c0c19] dark:to-[#1f1f3a] 
-        text-white 
+         border-gray-400
+        dark:from-[#0c0c19] dark:to-[#1f1f3a]  
         rounded-2xl 
-        dark:border-gray-500 dark:border
+        dark:border-gray-500 border
         p-6 
         pt-16 
         shadow-xl 
@@ -64,9 +63,9 @@ const FoodCard = ({ food }) => {
           </div>
         )}
 
-        <h2 className="text-lg md:text-xl font-bold text-green-100">{foodTitle}</h2>
-        <p className="text-sm text-green-200">Category: {category}</p>
-        <p className="text-sm text-green-200">
+        <h2 className="text-lg md:text-xl font-bold">{foodTitle}</h2>
+        <p className="text-sm ">Category: {category}</p>
+        <p className="text-sm ">
           Quantity: {quantity} {unit}
         </p>
       </div>
@@ -76,9 +75,9 @@ const FoodCard = ({ food }) => {
           className="
             mt-5 w-full flex items-center justify-center gap-2 
             bg-white 
-            hover:bg-green-600 
-            text-[#1d3e2d] 
-            hover:text-white 
+            border border-gray-400
+            text-[#1d3e2d]
+            cursor-pointer  
             font-semibold 
             text-sm 
             py-2.5 

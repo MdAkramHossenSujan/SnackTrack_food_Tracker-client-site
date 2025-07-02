@@ -12,7 +12,7 @@ const MostFavoriteFoods = () => {
       .then((res) => {
         const favItems = res.data
           .filter((item) => item.isFavorite)
-          .slice(0, 3);
+          .slice(0, 4);
         setFavorites(favItems);
       })
       .catch((err) => {
@@ -37,7 +37,7 @@ const MostFavoriteFoods = () => {
         </p>
       </motion.div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {favorites.map((food, index) => (
           <motion.div
             key={food._id}
@@ -50,7 +50,7 @@ const MostFavoriteFoods = () => {
             <img
               src={food.foodImage}
               alt={food.foodTitle}
-              className="w-full h-48 object-cover rounded-t-xl"
+              className="w-full h-48 lg:h-38 object-cover rounded-t-xl"
             />
             <div className="p-5 space-y-3">
               <h3 className="text-xl font-bold text-gray-800 dark:text-white">

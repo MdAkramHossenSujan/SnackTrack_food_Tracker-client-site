@@ -35,7 +35,7 @@ const slides = [
 
 const Banner = () => {
   return (
-    <div className="h-[60vh] md:min-h-screen w-full my-16 relative">
+    <div className="h-[70vh] w-full my-16 relative">
       <Swiper
         direction={'horizontal'}
         pagination={{ clickable: true }}

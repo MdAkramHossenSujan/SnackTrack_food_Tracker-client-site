@@ -8,7 +8,7 @@ const NearestCad = ({ nearestPromise }) => {
   const displayFoods = foods.slice(0, 6);
 
   return (
-    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {displayFoods.map((food) => (
         <div
           key={food._id}
@@ -33,7 +33,7 @@ const NearestCad = ({ nearestPromise }) => {
               <img
                 src={food.foodImage}
                 alt={food.foodTitle}
-                className="w-full h-48 object-cover transform group-hover:scale-105 transition duration-300"
+                className="w-full h-48 xl:h-36 object-cover transform group-hover:scale-105 transition duration-300"
               />
             </div>
 
