@@ -45,7 +45,7 @@ const SignIn = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="hero-content flex-col lg:flex-row-reverse bg-white/10 dark:bg-black/30 rounded-2xl p-4 shadow-xl backdrop-blur-md max-w-xl lg:max-w-6xl w-full gap-12"
+        className="hero-content flex-col lg:flex-row-reverse bg-white/10 dark:bg-black/30 rounded-2xl p-4 lg:py-10 shadow-xl backdrop-blur-md max-w-xl lg:max-w-6xl w-full gap-12"
       >
         <motion.div
           animate={{ x: [0, -15, 0] }}

@@ -34,7 +34,7 @@ const FoodCard = ({ food }) => {
       "
     >
       {/* Decorative blurred circle */}
-      <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-green-400 opacity-20 blur-3xl pointer-events-none"></div>
+      <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-gray-600 dark:bg-green-400 opacity-30 dark:opacity-20 blur-3xl pointer-events-none"></div>
 
       {/* Food Image */}
       <div className="absolute -top-14 left-1/2 transform -translate-x-1/2">

@@ -41,6 +41,7 @@ const NavBar = () => {
               <li className='hover:bg-green-600 hover:text-white'><NavLink to={'./'}>Home</NavLink></li>
               <li className='hover:bg-green-600 hover:text-white'><NavLink to={'/fridge'}>Fridge</NavLink></li>
               <li className='hover:bg-green-600 hover:text-white'><NavLink to={'/about'}>About</NavLink></li>
+               <li className='hover:bg-green-600 hover:text-white'><NavLink to={'/contact'}>Contact</NavLink></li>
                <li className='hover:bg-green-600 hover:text-white'>
                   <NavLink to={'/addfood'}>Add Food</NavLink>
                 </li>
@@ -81,6 +82,7 @@ const NavBar = () => {
                <li>
                   <NavLink to={'/addfood'}>Add Food</NavLink>
                 </li>
+                <li><NavLink to={'/contact'}>Contact</NavLink></li>
               
               {
                 user && <li>
@@ -93,6 +95,7 @@ const NavBar = () => {
                   <NavLink to={'/dashboard'}>Dashboard</NavLink>
                 </li>
               }
+
           </ul>
         </div>
         <div class="navbar-end gap-4 pr-4">

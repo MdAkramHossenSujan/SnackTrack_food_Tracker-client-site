@@ -19,6 +19,7 @@ import MyAddedFood from "../pages/dashboard/MyAddedFood";
 import Expired from "../pages/dashboard/Expired";
 import NotExpired from "../pages/dashboard/NotExpired";
 import Profile from "../pages/dashboard/Profile";
+import Contact from "../pages/Contact";
 
 
 export const router = createBrowserRouter([
@@ -82,6 +83,10 @@ export const router = createBrowserRouter([
       {
         path: '/about',
         Component: About
+      },
+      {
+        path: '/contact',
+        Component: Contact
       }
     ]
   },
