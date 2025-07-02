@@ -7,6 +7,7 @@ import Faq from '../../components/faq/Faq';
 import CommentSection from '../../components/comment/Comment';
 import BenefitsSection from '../../components/whyuseus/BenefitSection';
 import IndustriesWeServe from '../../components/IndustriesWeServe';
+import MostFavoriteFoods from '../../components/Mostfavouritefood';
 
 
 
@@ -26,8 +27,12 @@ const Home = () => {
             <div>
                 <BenefitsSection/>
             </div>
+
             <div>
                 <Nearest />
+            </div>
+            <div>
+                <MostFavoriteFoods/>
             </div>
             <div>
                 <ExpiredFood />

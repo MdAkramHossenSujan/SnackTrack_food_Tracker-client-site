@@ -65,7 +65,7 @@ const BenefitsSection = () => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={cardVariants}
-              className="card bg-base-100 shadow hover:shadow-lg transition-all duration-300 p-6"
+              className="card bg-base-100 hover:-translate-y-1 dark:shadow-blue-400 shadow-gray-600 shadow hover:shadow-md transition-all duration-300 p-6"
             >
               <div className="flex justify-center mb-4">
                 {benefit.icon}
