@@ -20,7 +20,7 @@ const Expired = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center min-h-screen py-12">
-        <span className="loading loading-spinner text-red-600"></span>
+        <span className="loading loading-spinner text-green-600"></span>
       </div>
     );
   }
@@ -37,7 +37,7 @@ const Expired = () => {
     data?.filter((food) => new Date(food.expiryDate) < today) || [];
 
   return (
-    <div className="max-w-7xl mx-auto md:p-6  dark:bg-gray-900 min-h-screen">
+    <div className="max-w-7xl mx-auto md:p-6 lg:py-18 dark:bg-gray-900 min-h-screen">
       <h2 className="text-4xl font-extrabold mb-6 text-red-700 dark:text-red-500">
         Expired Foods
       </h2>
@@ -78,7 +78,7 @@ const Expired = () => {
                     <img
                       src={food.foodImage}
                       alt={food.foodTitle}
-                      className="w-20 h-16 object-cover rounded-lg shadow-md"
+                      className="md:w-20 md:h-16 w-12 h-10  object-cover rounded-lg shadow-md"
                       loading="lazy"
                     />
                   </td>

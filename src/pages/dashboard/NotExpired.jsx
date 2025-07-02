@@ -37,7 +37,7 @@ const NotExpired = () => {
     data?.filter((food) => new Date(food.expiryDate) > today) || [];
 
   return (
-    <div className="max-w-7xl mx-auto p-8">
+    <div className="max-w-7xl mx-auto p-8 lg:py-18">
       <h2 className="text-3xl font-bold mb-4 text-green-600">
         Not Expired Food
       </h2>

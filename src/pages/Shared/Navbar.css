@@ -4,5 +4,6 @@ a.active{
     
 }
 a.active:hover{
-    color: white;
+    color: rgb(224, 226, 214);
+    background: #0a4e04;
 }

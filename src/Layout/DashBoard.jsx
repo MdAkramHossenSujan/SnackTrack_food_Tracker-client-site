@@ -15,7 +15,7 @@ import { Moon, Sun } from 'lucide-react';
 const DashBoard = () => {
     const { theme, toggleTheme } = use(AuthContext)
     return (
-        <div className='relative '>
+        <div>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col ">
@@ -94,7 +94,7 @@ const DashBoard = () => {
                 </div>
 
             </div>
-            <div className='absolute right-6 top-6 bg-green-800 p-1 rounded-full'>
+            <div className='fixed right-6 top-6'>
                 <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
                     <Moon size={30} className="swap-on text-gray-300" />
                     <Sun size={30} className="swap-off text-yellow-500" />
