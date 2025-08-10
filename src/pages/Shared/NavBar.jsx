@@ -125,6 +125,7 @@ const NavBar = () => {
                 <Link to={'/signin'} className={'btn rounded-4xl dark:border-white shadow shadow-black dark:shadow-white dark:shadow'}>Sign In</Link>
               </div>
           }
+          
           <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
             <Moon size={30} className="swap-on text-gray-400" />
             <Sun size={30} className="swap-off text-yellow-500" />
