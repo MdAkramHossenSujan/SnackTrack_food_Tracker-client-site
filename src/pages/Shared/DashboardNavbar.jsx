@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 const DashboardNavbar = () => {
-  const { user, logoutUser } = use(AuthContext);
+  const { user, logOut} = use(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    logoutUser()
+    logOut()
       .then(() => {
         toast.success('Logged out successfully');
         setIsMenuOpen(false);
@@ -77,7 +77,7 @@ const DashboardNavbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 w-full px-3 py-2 rounded-md bg-red-500 hover:bg-red-600 text-white text-sm font-medium transition"
+                className="flex cursor-pointer items-center gap-2 w-full px-3 py-2 rounded-md bg-red-500 hover:bg-red-600 text-white text-sm font-medium transition"
               >
                 <LogOut size={16} />
                 Logout

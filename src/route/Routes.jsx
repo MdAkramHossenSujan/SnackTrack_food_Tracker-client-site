@@ -92,7 +92,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    Component: DashBoard,
+    element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
     hydrateFallbackElement: <div className='min-h-screen max-w-screen mx-auto flex justify-center'>
       <span className="loading loading-spinner text-success"></span>
     </div>,
