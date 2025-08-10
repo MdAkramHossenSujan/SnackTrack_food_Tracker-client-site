@@ -43,7 +43,7 @@ const DashBoard = () => {
                             <Link to={'/'} class="my-auto text-xl md:text-2xl lg:text-3xl">SnackTrack</Link>
                         </div>
                     </div>
-                        <div className='px-6 py-18 lg:py-0 md:px-8'>
+                        <div className='px-6 py-18 md:px-8'>
                         <DashboardNavbar/>
                         <Outlet />
                     </div>
@@ -95,7 +95,7 @@ const DashBoard = () => {
                 </div>
 
             </div>
-            <div className='fixed right-6 top-6'>
+            <div className='fixed z-40 right-6 top-6'>
                 <label onClick={toggleTheme} className={`cursor-pointer  swap swap-rotate ${theme === 'dark' ? 'swap-active' : ''}`}>
                     <Moon size={30} className="swap-on text-gray-300" />
                     <Sun size={30} className="swap-off text-yellow-500" />

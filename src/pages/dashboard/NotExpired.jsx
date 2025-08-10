@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { use, useEffect } from 'react';
 import noData from '../../assets/Animation/Animation - 1751316496789(No Data).json';
+import { AuthContext } from '../../context/AuthContext/AuthContext';
 const NotExpired = () => {
+  const {user} = use(AuthContext)
    useEffect(() => {
               document.title = `Not Expired | Dashboard | SnackTrack`;
               window.scrollTo(0, 0);
@@ -35,13 +37,14 @@ const NotExpired = () => {
       </div>
     );
   }
-
+  const myFoods =
+  data?.filter((food) => food.userEmail === user.email) || [];
   // fallback empty array
   const expiredFoods =
-    data?.filter((food) => new Date(food.expiryDate) > today) || [];
+    myFoods?.filter((food) => new Date(food.expiryDate) > today) || [];
 
   return (
-    <div className="max-w-7xl mx-auto p-8 lg:py-18">
+    <div className="max-w-7xl min-h-screen mx-auto p-8">
       <h2 className="text-3xl font-bold mb-4 text-green-600">
         Not Expired Food
       </h2>

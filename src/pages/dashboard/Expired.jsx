@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { use, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Lottie from 'lottie-react';
 import noData from '../../assets/Animation/Animation - 1751316496789(No Data).json';
+import { AuthContext } from '../../context/AuthContext/AuthContext';
 
 const Expired = () => {
+  const {user} = use(AuthContext
+  )
    useEffect(() => {
               document.title = `Expired | Dashboard | SnackTrack`;
               window.scrollTo(0, 0);
@@ -36,14 +39,15 @@ const Expired = () => {
       </div>
     );
   }
-
+  const myFoods =
+  data?.filter((food) => food.userEmail === user.email) || [];
   const expiredFoods =
-    data?.filter((food) => new Date(food.expiryDate) < today) || [];
+    myFoods?.filter((food) => new Date(food.expiryDate) < today) || [];
 
   return (
-    <div className="max-w-7xl mx-auto md:p-6 lg:py-18 dark:bg-gray-900 min-h-screen">
+    <div className="max-w-7xl mx-auto md:p-6 dark:bg-gray-900 min-h-screen">
       <h2 className="text-4xl font-extrabold mb-6 text-red-700 dark:text-red-500">
-        Expired Foods
+       Your Expired Foods
       </h2>
 
       {expiredFoods.length === 0 ? (

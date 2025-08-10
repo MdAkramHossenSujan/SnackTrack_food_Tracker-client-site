@@ -123,7 +123,7 @@ const DashboardHome = () => {
 
     return (
         <div>
-            <div className="max-w-7xl mx-auto min-h-screen px-6 xl:py-24 lg:py-14 py-8 space-y-10">
+            <div className="max-w-7xl mx-auto min-h-screen px-6 lg:py-14 py-8 space-y-10">
 
 {/* Stats cards */}
 <div className="bg-white dark:bg-gray-800 flex md:flex-row flex-col gap-6 justify-between shadow rounded-lg py-6 px-8 text-center">
