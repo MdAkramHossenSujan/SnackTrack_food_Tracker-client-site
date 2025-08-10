@@ -17,7 +17,6 @@ import {
     Pie,
     Cell,
 } from 'recharts';
-import DashboardNavbar from '../Shared/DashboardNavbar';
 const COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'];
 
 const DashboardHome = () => {
@@ -124,7 +123,6 @@ const DashboardHome = () => {
 
     return (
         <div>
-             <DashboardNavbar/>
             <div className="max-w-7xl mx-auto min-h-screen px-6 xl:py-24 lg:py-14 py-8 space-y-10">
 
 {/* Stats cards */}
