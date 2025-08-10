@@ -19,7 +19,7 @@ const DashboardNavbar = () => {
 
   return (
     <>
-      <div className="flex items-center z-100 fixed top-0 left-0 right-0 justify-end px-18 py-5 bg-white dark:bg-gray-900 border-b dark:border-gray-700">
+      <div className="lg:flex hidden items-center z-10 fixed top-0 left-0 right-0 justify-end px-18 py-5 bg-white dark:bg-gray-900 border-b dark:border-gray-700">
         
         {/* Right Side */}
         <div className="flex items-center gap-4 relative">
