@@ -22,7 +22,7 @@ const NotExpired = () => {
   // handle loading and errors first
   if (isLoading) {
     return (
-      <div className="flex justify-center py-8">
+      <div className="flex min-h-screen justify-center py-8">
         <span className="loading loading-spinner text-success"></span>
       </div>
     );
