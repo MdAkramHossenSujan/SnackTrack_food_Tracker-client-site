@@ -55,7 +55,7 @@ const FoodCard = ({ food }) => {
         />
       </div>
 
-      <div className="mt-4 text-center space-y-2 md:min-h-[90px]">
+      <div className="mt-4 text-center space-y-2 md:h-[120px]">
         {isExpired && (
           <div className="inline-flex items-center gap-2 text-xs px-3 py-1 bg-gradient-to-r from-red-600 to-red-400 text-white rounded-full shadow">
             <FaExclamationTriangle size={12} />
